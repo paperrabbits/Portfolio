@@ -1,0 +1,46 @@
+@import './sass/_styles.scss';
+@import './sass/_mixins.scss';
+
+.App {
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    background-color: rgb(240, 240, 240);
+    background-color: $gunmetal;
+    // font-family: 'Big Shoulders Stencil Text', cursive;
+    // font-family: 'Montserrat Alternates', sans-serif;
+    // font-family: 'Russo One', sans-serif;
+    // font-family: 'Big Shoulders Stencil Text', cursive;
+    font-family: 'Montserrat Alternates', sans-serif;
+    // font-family: 'Russo One', sans-serif;
+    // font-family: 'Oleo Script Swash Caps', cursive;
+    // font-size: x-large;
+    // @include column;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: scroll;
+}
+
+.main-section {
+    height: 100%;
+    width: 100%;
+    @include main;
+    // padding-top: 20px;
+    // padding-bottom: 20px;
+    // background-color: $steel-blue;
+}
+
+.box-container {
+    @include boxer;
+    // background-color: $prussian-blue;
+}
+
+button {
+    &:hover {
+        cursor: pointer;
+    }
+    &:focus {
+        outline: 0;
+    }
+}

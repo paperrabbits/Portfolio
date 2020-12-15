@@ -1,0 +1,87 @@
+@import '../../../sass/styles.scss';
+@import '../../../sass/_mixins.scss';
+
+.poker-master {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to right, $CHARCOAL, black);
+    font-family: sans-serif;
+    background-image: url('../../../assets/black-paisely.jpg');
+}
+
+.Poker-container {
+    width: 100%;
+    height: 100%;    
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.side-rail {
+    width: 10%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    color: silver;
+}
+
+#game-logo {
+    width: 50px;
+    height: 50px;
+    color: rgba(88, 88, 88, 0.686);
+    padding-bottom: 50px;
+}
+
+#game-logo:hover {
+    cursor: pointer;
+    color: silver;
+    color: rgba(150, 150, 150, 0.75);
+}
+
+#game-room-banner {
+    width: 500px;
+    color: rgb(0, 122, 175);
+    font-weight: bold;
+    transform: rotate(-90deg);
+}
+
+#exit-btn {
+    color: silver;
+    font-weight: bold;
+    line-height: 0em;
+    background-color: orangered;
+    position: relative;
+}
+
+.bottom-rail {
+    width: 100%;
+    height: 25%;
+    @include column;
+}
+
+#launch-btn {
+    position: relative;
+}
+
+.game-loading {
+    width: 100%;
+    @include row;
+}
+
+#rail-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    padding: 1%;
+}
+
+.mid-rail {
+    text-align: center;
+}

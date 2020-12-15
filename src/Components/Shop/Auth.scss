@@ -1,0 +1,45 @@
+@import '../../sass/mixins';
+@import '../../sass/styles';
+
+.sign-master {
+    @include col-spc;
+    width: 40%;
+    border-radius: 5px;
+    color: $cultured; background-color: $gunmetal;
+    .sign-wrapper {
+        @include col-spc;
+        width: 100%;
+        .input-parent {
+            @include col-spc;
+            width: 100%;
+            .input-fields {
+                @include row-spc;
+                width: 75%;
+                #shop-auth-input {
+                    width: 75%;
+                    border-radius: 2px; border-color: transparent;
+                }
+            }
+        }
+    }
+    .shop-auth-btns {
+        @include row-spc;
+        width: 50%;
+        margin: 20px 0px;
+        button {
+            @include fix-btn-light;
+            border-radius: 5px;
+            padding: 5px 10px;
+            color: $cultured;
+            transition-property: all;
+            &:hover {
+                transition: ease 0.5s;
+                background-color: rgb(130, 130, 130);
+            }
+        }
+        .main-btns {
+            width: 40%;
+            @include row-spc;
+        }
+    }
+}

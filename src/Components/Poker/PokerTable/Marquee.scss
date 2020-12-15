@@ -1,0 +1,96 @@
+@import '../../../sass/styles.scss';
+
+.Marquee-master {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    color: silver;
+    font-size: small;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    background-color: $CHARCOAL;
+    box-shadow: inset 0px 0px 5px 1px rgba(10, 10, 10, 1);
+    border-radius: 20px;
+    position: relative;
+}
+
+.marquee-header {
+    height: 25%;
+    width: 100%;
+    border-radius: 10px;
+    border-top: 5px solid $CHARCOAL2;
+    border-bottom: 5px solid $CHARCOAL2;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: silver;
+    margin-bottom: 10px;
+}
+
+.marquee-header-w {
+    height: 25%;
+    width: 100%;
+    border-radius: 10px;
+    border-top: 5px solid goldenrod;
+    border-bottom: 5px solid goldenrod;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: silver;
+    margin-bottom: 10px;
+}
+
+#winner-bucket {
+    height: 10%;
+    text-align: left;
+    font-weight: bold;
+    font-size: large;
+}
+
+.switch-container {
+    width: 30%;
+    height: 30px;
+    margin-top: 50px;
+}
+
+.react-switch-checkbox {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+  }
+  
+  .react-switch-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    // width: 100%;
+    // height: 50%;
+    width: 100%;
+    height: 100%;
+    background: grey;
+    border-radius: 100px;
+    position: relative;
+    transition: background-color .2s;
+  }
+  
+  .react-switch-label .react-switch-button {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 45%;
+    height: 90%;
+    border-radius: 45px;
+    transition: 0.2s;
+    background: #fff;
+    box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);
+  }
+  
+  .react-switch-checkbox:checked + .react-switch-label .react-switch-button {
+    left: calc(100% - 2px);
+    transform: translateX(-100%);
+  }
+  
+  .react-switch-label:active .react-switch-button {
+    width: 60px;
+  }
+

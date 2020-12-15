@@ -1,0 +1,41 @@
+@import '../../sass/mixins';
+@import '../../sass/styles';
+
+.Feed {
+    width: 95%;
+    // height: 30%;
+    background-color: $indigo-dye;
+    border-radius: 10px;
+    color: $cultured;
+    @include light-box;
+    @include row-spc;
+    .shop-scrollbar {
+        width: 100%;
+        height: 100%;
+        @include row-spc;
+        padding-bottom: 25px;
+    }
+    button {
+        @include fix-btn;
+        color: $cultured;
+        &:hover {
+            color: $steel-blue;
+        }
+        #scroll-btns {
+            width: 40px;
+            height: 40px;
+        }
+    }
+}
+
+.marquee {
+    width: 100%;
+    @include row;
+    padding-right: 25px;
+    #marquee-container {
+        @include col-start;
+        width: 20%;
+        &:hover { cursor: pointer; }
+        img { width: 100%; }
+    }
+}

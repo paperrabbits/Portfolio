@@ -1,0 +1,7 @@
+@import '../../sass/mixins';
+@import '../../sass/styles';
+
+.w-dd {
+    @include col-start;
+    position: absolute;
+}

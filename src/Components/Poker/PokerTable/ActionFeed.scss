@@ -1,0 +1,14 @@
+@import '../../../sass/styles.scss';
+
+.Feed-Master {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    background-color: $CHARCOAL2;
+    box-shadow: inset 0px 0px 10px 1px rgba(10, 10, 10, 1);
+    border-radius: 20px;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    padding-bottom: 15px;
+}
+

@@ -1,0 +1,142 @@
+@import '../../sass/mixins';
+@import '../../sass/styles';
+
+.products-master {
+    width: 100%;
+    @include col-start;
+    background-color: rgb(250, 250, 250);
+    .grid-menu {
+        @include row-start;
+        width: 100%;
+        height: 100%;
+        margin: 100px 0px;
+        .menu {
+            @include col-top;
+            width: 10%;
+            height: 100vh;
+            border-right: 1px solid silver;
+            .spacer {
+                @include row-spc;
+                width: 90%;
+            }
+            p {
+                width: 85%;
+                line-height: 2em;
+                border-radius: 2px;
+                padding-left: 10px;
+                color: $gunmetal;
+                transition-property: all;
+                &:hover {
+                    cursor: pointer;
+                    transition: ease 0.5s;
+                    background-color: $steel-blue;
+                }
+            }
+            #catg {
+                width: 85%;
+                line-height: 2em;
+                padding-left: 10px;
+                border-radius: 2px;
+                color: $gunmetal;
+                transition-property: all;
+                &:hover {
+                    cursor: pointer;
+                    transition: ease 0.5s;
+                    background-color: $steel-blue;
+                }
+            }
+            .is-active {
+                width: 85%;
+                line-height: 2em;
+                padding-left: 10px;
+                border-radius: 2px;
+                color: $gunmetal;
+                transition-property: all;
+                transition: ease 0.5s;
+                background-color: $indigo-dye2;
+            }
+        }
+        .gallery-feed {
+            @include fl-wrap;
+            width: 75%;
+            margin-left: 25px;
+            .product-box {
+                @include column;
+                width: 25%;
+                margin: 15px;
+                border-radius: 5px;
+                background-color: $cultured;
+                .product-title-box {
+                    @include row;
+                    width: 100%;
+                    .product-title {
+                        width: 75%;
+                        text-align: center;
+                    }
+                    #heart-icon {
+                        width: 25px;
+                        height: 25px;
+                        position: relative; right: 10px;
+                        color: silver;
+                        border-radius: 50%;
+                        border: 1px solid transparent;
+                        transition-property: all;
+                        // animation: ring linear 0.25s;
+                        // transition: ease 0.25s;
+                        &:hover {
+                            cursor: pointer;
+                            color: silver;
+                        }
+                    }
+                    #heart-icon-saved {
+                        width: 25px;
+                        height: 25px;
+                        animation: ring linear 0.25s;
+                        // transition-duration: 0.25s;
+                        border-radius: 50%;
+                        position: relative; right: 10px;
+                        color: $CHINESERED;
+                        &:hover { cursor: pointer; }
+                    }
+                }
+                #product-img {
+                    width: 100%;
+                    border-radius: 5px;
+                    margin-bottom: 10px;
+                    &:hover { cursor: pointer; }
+                }
+                #add-to-cart-btn {
+                    @include fix-btn;
+                    width: 50%;
+                    border-radius: 2px;
+                    border: 0px solid transparent;
+                    background-color: transparent;
+                    padding: 5px;
+                    margin: 10px 0px;
+                    transition-property: all;
+                    &:hover {
+                        transition: ease 0.5s;
+                        background-color: $indigo-dye2;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes ring {
+    0% {
+		transform: scale(1);
+        // box-shadow: 0px 0px 2px 1px $green;
+	}
+
+	50% {
+		transform: scale(1.5);
+        // box-shadow: 0px 0px 3px 2px $green;
+	}
+
+	100% {
+		transform: scale(1);
+        // box-shadow: 0px 0px 4px 3px $green;
+	}
+}

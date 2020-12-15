@@ -1,0 +1,103 @@
+@import '../../sass/mixins';
+@import '../../sass/styles';
+
+.Shop-Header {
+    @include row;
+    @include light-box;
+    width: 100%;
+    height: 150px; margin-bottom: 50px;
+    position: relative;
+    color: $cultured;
+    background-color: $gunmetal;
+    font-weight: bold;
+    #logo {
+        height: 100px;
+        width: 100px;
+        border-radius: 5px;
+        &:hover { cursor: pointer; }
+    }
+}
+
+
+#cart-icon {
+    width: 25px;
+    height: 25px;
+}
+
+
+.head-nav {
+    @include row-spc;
+    width: 30%;
+    #cart-btn {
+        @include row-spc;
+        width: max-content;
+        line-height: 0em;
+        p { margin-left: 5px; color: $green; }
+    }
+    button {
+        @include fix-btn;
+        color: $cultured;
+        border-bottom: 2px solid transparent;
+        font-weight: bold;
+        margin: 5px; padding-bottom: 5px;
+        transition-property: all;
+        &:hover {
+            transition: ease 0.5s;
+            border-bottom: 2px solid $steel-blue;
+        }
+    }
+}
+
+
+//  DROP-DOWN  ( WISHLIST )
+.dd-wish {
+    @include col-start;
+    @include light-box;
+    width: 20%;
+    height: 350px; overflow-y: scroll;
+    position: absolute; top: 150px; right: 15%;
+    border: 1px solid $cultured; border-radius: 5px;
+    color: $cultured;
+    background-color: $prussian-blue;
+    text-align: center;
+    padding-bottom: 25px;
+    p {
+        width: 100%;
+        font-size: small;
+        font-family: sans-serif;
+        color: silver;
+    }
+    h4 {
+        font-size: large;
+        font-weight: bold;
+        line-height: 2em;
+        border-bottom: 2px solid $cultured;
+    }
+    .list-menu {
+        @include row-around;
+        width: 90%;
+        height: max-content;
+        border-radius: 2px;
+        margin-bottom: 15px;
+        &:hover { background-color: $indigo-dye2; }
+        #circle-x {
+            width: 20px;
+            height: 20px;
+            border: none;
+            color: rgb(174, 174, 174);
+            background-color: transparent;
+            &:hover { color: $cultured; }
+        }
+        p { font-size: small; }
+        button {
+            border: none;
+            background-color: transparent;
+            margin-right: 10px;
+        }
+        img {
+            width: 50%;
+            margin-left: 25px;
+            &:hover { cursor: pointer; }
+        }
+    }
+}

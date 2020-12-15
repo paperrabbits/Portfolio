@@ -1,0 +1,17 @@
+@import '../../sass/styles';
+@import '../../sass/mixins';
+
+.drawer {
+    @include row;
+    width: 10%;
+    position: absolute;
+    line-height: 0em;
+    background-color: $cultured;
+    color: $gunmetal;
+    button {
+        @include fix-btn;
+        &:hover {
+            color: $green;
+        }
+    }
+}

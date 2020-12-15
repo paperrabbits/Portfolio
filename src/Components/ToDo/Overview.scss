@@ -1,0 +1,95 @@
+@import '../../sass/mixins';
+@import '../../sass/styles';
+
+.Todo-Home {
+    @include col-spc;
+    width: 100%;
+    height: 100vh;
+    overflow-y: scroll;
+    background-color: $cultured;
+    header {
+        @include row-front;
+        @include light-box;
+        width: 100%;
+        height: 100px;
+        position: sticky; top: 0;
+        text-align: right;
+        color: $green;
+        background-color: $gunmetal;
+        h1 { width: 55%; }
+        .nav-links {
+            @include row-end;
+            width: 40%;
+            text-align: right;
+            button {
+                // line-height: 0em;
+                padding: 0px 10px 3px 10px;
+                background-color: transparent; border: none;
+                font-weight: bold;
+                color: $cultured;
+                transition-property: all;
+                border-bottom: 2px solid transparent;
+                &:hover { 
+                    transition: ease 0.5s;
+                    border-bottom: 2px solid $green;
+                }
+            }
+        }
+        section {
+            margin-top: 50px;
+            margin-bottom: 50px;
+            line-height: 0em;
+        }
+    }
+}
+
+#preview {
+    @include light-box;
+    width: 60%;
+    border-radius: 20px;
+    margin-bottom: 100px;
+}
+
+.description {
+    @include column;
+    p { font-size: large; }
+}
+
+.nav-links {
+    @include row-end;
+    width: 40%;
+    p { font-weight: bolder; font-size: large; }
+}
+
+.auth-container {
+    @include column;
+    @include padder;
+    @include rounded-modal;
+    width: 40%;
+    .input-fields {
+        @include row-r;
+        width: 75%;
+    }
+    .auth-btn-container {
+        @include row;
+        @include buffer;
+        width: 50%;
+        button {
+            @include fix-btn-light;
+            border-radius: 5px;
+            padding: 5px 10px;
+            color: $cultured;
+            font-weight: bold;
+            transition-property: all;
+            &:hover {
+                transition: ease 0.5s;
+                background-color: rgb(130, 130, 130);
+            }
+        }
+    }
+}
+
+.input-labels {
+    color: $cultured;
+    font-weight: bold;
+}

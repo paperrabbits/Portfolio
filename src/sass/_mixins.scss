@@ -1,0 +1,171 @@
+@import "./_styles.scss";
+
+@mixin column{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+@mixin col-start{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+@mixin col-top{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+@mixin col-spc{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+@mixin col-even {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+@mixin col-tight {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+@mixin row-spc {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+@mixin row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+@mixin row-tight {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+@mixin row-around {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+@mixin row-front {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+@mixin row-start {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+}
+@mixin row-end {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+@mixin row-bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+@mixin buffer {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+@mixin padder {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+@mixin row-r {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+@mixin fl-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+}
+@mixin subText{
+    width: 10%;
+    font-size: 16px;
+    font-family: 'Montserrat Alternates', sans-serif;
+    // border-bottom: 1px solid $cultured;
+    border-bottom: 1px solid $cultured;
+    color: $cultured;
+    // color: $gunmetal;
+    &:hover {
+        color: $steel-blue;
+        border-bottom: 1px solid $steel-blue;
+    }
+    &:focus {
+        color: $steel-blue;
+        border-bottom: 1px solid $steel-blue;
+    }
+}
+@mixin main {
+    width: 100%;
+    height: 50vh;
+}
+@mixin boxer{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+@mixin fix-btn {
+    background-color: transparent;
+    border: none;
+    color: $gunmetal;
+}
+@mixin fix-btn-light {
+    background-color: transparent;
+    border: none;
+    color: $cultured;
+}
+@mixin light-box {
+    box-shadow: 1px 1px 10px 1px $gunmetal;
+}
+@mixin light-box {
+    box-shadow: 1px 1px 10px 1px $gunmetal;
+}
+@mixin night-box {
+    box-shadow: 1px 1px 15px 0px black;
+}
+@mixin night-box-l {
+    box-shadow: -5px 0px 5px 1px black;
+}
+@mixin rounded-modal {
+    background-color: $gunmetal;
+    color: $cultured;
+    border-radius: 10px;
+    @include night-box;
+}
+@mixin easy-fill {
+    transition-property: all;
+    transition: ease 0.5s;
+}

@@ -1,0 +1,76 @@
+@import '../../sass/styles';
+@import '../../sass/mixins';
+
+.siderail-main {
+    width: 20%;
+    height: 100vh;
+    background-color: $cultured;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    // position: sticky;
+    // top: 0;
+    box-shadow: 5px 0px 10px 5px rgba(0, 0, 0, 0.75);
+    border-radius: 10px;
+}
+
+.side-rail-title {
+    height: 10%;
+    width: 100%;
+    @include row;
+    border-bottom: 2px solid $green;
+    color: $gunmetal;
+}
+
+.list-section {
+    width: 100%;
+    height: 60%;
+    overflow-y: scroll;
+    border-bottom: 2px solid $green;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    @include col-start;
+    button {
+        @include fix-btn;
+    }
+    .folders {
+        @include row-spc;
+        width: 75%;
+        margin-top: 5px;
+        transition-property: all;
+        // p { color: $princeton-orange; line-height: 0em; }
+        p { font-weight: bold; color: $green; line-height: 0em; }
+        padding: 0px 20px;
+        border-radius: 20px;
+        &:hover {
+            cursor: pointer;
+            transition: ease 0.5s;
+            font-weight: bold;
+            background-color: $indigo-dye2;
+        }
+    }
+}
+
+#is-active {
+    background-color: $indigo-dye2;
+}
+
+.rail-foot {
+    height: 10%;
+    width: 100%;
+    @include column;
+    text-align: left;
+    button {
+        @include fix-btn;
+        transition-property: all;
+        border-radius: 20px;
+        margin-bottom: 5px;
+        // padding: 10px 0px;
+        width: 30%;
+        &:hover {
+            transition: ease 0.5s;
+            background-color: silver;
+        }
+    }
+}

@@ -1,0 +1,15 @@
+@import '../../sass/mixins';
+@import '../../sass/styles';
+
+.footer-main {
+    @include row;
+    width: 100%;
+    height: 100px;
+    position: sticky; bottom: 0;
+    color: $gunmetal;
+    background-color: $steel-gray;
+    .foot-icons {
+        width: 25px;
+        height: 25px;
+    }
+}

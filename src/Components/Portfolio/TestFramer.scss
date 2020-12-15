@@ -1,0 +1,12 @@
+@import '../../sass/styles';
+@import '../../sass/mixins';
+
+.Playground {
+    color: $cultured;
+    @include row;
+    h2 {
+        color: $steel-blue;
+        color: black;
+        color: white;
+    }
+}

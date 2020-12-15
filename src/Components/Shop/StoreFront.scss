@@ -1,0 +1,7 @@
+@import '../../sass/mixins';
+@import '../../sass/styles';
+
+.Store-main {
+    width: 100%;
+    @include column;
+}

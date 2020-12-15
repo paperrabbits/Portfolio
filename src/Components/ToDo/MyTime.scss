@@ -1,0 +1,10 @@
+@import '../../sass/styles';
+@import '../../sass/mixins';
+
+.app-main {
+    @include row;
+}
+
+// .app-container {
+//     @include row-spc;
+// }

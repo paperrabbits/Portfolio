@@ -1,0 +1,7 @@
+@import '../../sass/mixins';
+@import '../../sass/styles';
+
+.crumbs {
+    width: 50%;
+    @include row;
+}

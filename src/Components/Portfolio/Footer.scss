@@ -1,0 +1,23 @@
+@import '../../sass/_mixins.scss';
+@import '../../sass/_styles.scss';
+
+.Main-Footer {
+    width: 100%;
+    min-height: 100px;
+    @include row;
+    background-color: rgb(215, 215, 215);
+    position: sticky;
+    bottom: 0;
+    span {
+        a {
+            color: $indigo-dye;
+            text-decoration-line: none;
+            &:focus {
+                color: $indigo-dye;
+            }
+            &:hover {
+                color: $steel-blue;
+            }
+        }
+    }
+}

@@ -1,0 +1,63 @@
+$HIGHCARD: rgb(0, 122, 175);
+$LIGHTHOUSE2: rgba(0, 122, 175, 0.85);
+$TWOPAIR: red;
+$THREEKIND: green;
+$STRAIGHT: navy;
+$FLUSH: orangered;
+$FULLHOUSE: purple;
+$FOURKIND: teal;
+$STRAIGHTFLUSH: black;
+$ROYALFLUSH: rgb(58, 206, 179);
+$LIGHTHOUSE: rgb(0, 122, 175);
+$CARPET2: rgba(33, 66, 57, 0.85);
+$CARPET: rgb(28, 61, 52);
+$NIGHTHAWK: rgb(18, 18, 18);
+$CHARCOAL: rgb(25, 33, 37);
+$CHARCOAL2: rgb(26, 46, 56);
+$STATUS: rgb(0, 142, 195);
+$EFFYES: rgb(0, 255, 153);
+$HAZE: rgb(31, 41, 46);
+
+$CBLUE: rgb(44, 77, 99);
+$CHINESERED: rgb(151, 66, 33);
+$fade: rgba(0, 0, 0, 0.70);
+$russo:font-family 'Russo One', sans-serif;
+
+/* SCSS HEX */
+$gunmetal: #202a32ff;
+$transparent: #202a3200;
+$prussian-blue: #122c40ff;
+$indigo-dye: #1d445eff;
+$indigo-dye2: rgba(29, 68, 94, 0.5);
+$steel-blue: #4c84a9ff;
+$princeton-orange: #f6863cff;
+$cultured: #f3f5f7;
+$cultured2: #f2f2f2;
+$green: #83c797;
+$green2: #67ae95;
+
+/* SCSS RGB */
+$gunmetal: rgba(32, 42, 50, 1);
+$prussian-blue: rgba(18, 44, 64, 1);
+$indigo-dye: rgba(29, 68, 94, 1);
+$steel-blue: rgba(76, 132, 169, 1);
+$princeton-orange: rgba(246, 134, 60, 1);
+$steel-gray: rgba(215, 215, 215, 1);
+
+/* SCSS Gradient */
+$gradient-top: linear-gradient(0deg, #202a32ff, #122c40ff, #1d445eff, #4c84a9ff, #f6863cff);
+$gradient-right: linear-gradient(90deg, #202a32ff, #122c40ff, #1d445eff, #4c84a9ff, #f6863cff);
+$gradient-bottom: linear-gradient(180deg, #202a32ff, #122c40ff, #1d445eff, #4c84a9ff, #f6863cff);
+$gradient-left: linear-gradient(270deg, #202a32ff, #122c40ff, #1d445eff, #4c84a9ff, #f6863cff);
+$gradient-top-right: linear-gradient(45deg, #202a32ff, #122c40ff, #1d445eff, #4c84a9ff, #f6863cff);
+$gradient-bottom-right: linear-gradient(135deg, #202a32ff, #122c40ff, #1d445eff, #4c84a9ff, #f6863cff);
+$gradient-top-left: linear-gradient(225deg, #202a32ff, #122c40ff, #1d445eff, #4c84a9ff, #f6863cff);
+$gradient-bottom-left: linear-gradient(315deg, #202a32ff, #122c40ff, #1d445eff, #4c84a9ff, #f6863cff);
+$gradient-radial: radial-gradient(#202a32ff, #122c40ff, #1d445eff, #4c84a9ff, #f6863cff);
+
+/* SCSS HSL */
+$gunmetal: hsla(207, 22%, 16%, 1);
+$prussian-blue: hsla(206, 56%, 16%, 1);
+$indigo-dye: hsla(204, 53%, 24%, 1);
+$steel-blue: hsla(204, 38%, 48%, 1);
+$princeton-orange: hsla(24, 91%, 60%, 1);

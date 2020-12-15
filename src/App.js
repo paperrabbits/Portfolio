@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+  // NPM
+import React, {useEffect} from 'react'
+import {withRouter} from 'react-router-dom'
 
-function App() {
+  // LOCAL
+import './App.scss'
+import routes from './routes'
+
+const App = (props) => {
+  const {pathname} = props.location
+
+  useEffect(() => {
+    if (pathname === '/') {
+      document.title = 'Porfolio'
+    } else if (pathname === '/projects') {
+      document.title = 'Porfolio'
+    } else if (pathname === '/poker') {
+      document.title = 'Texas Holdem'
+    } else if (pathname === '/todo') {
+      document.title = 'My Time App'
+    } else if (pathname === '/gallery') {
+      document.title = 'Freshly Picked Prints'
+    }
+  }, [pathname])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {routes}
     </div>
-  );
+  )
 }
-
-export default App;
+export default withRouter(App)

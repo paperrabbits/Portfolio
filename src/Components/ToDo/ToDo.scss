@@ -1,0 +1,112 @@
+@import '../../sass/styles';
+@import '../../sass/mixins';
+
+.todo-main {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    line-height: 0em;
+    @include row;
+}
+
+.list-item {
+    width: 98%;
+    height: 40px;
+    @include row-spc;
+    box-sizing: border-box;
+    background-color: $cultured;
+    color: $gunmetal;
+    border-radius: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.task-item-left {
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    button {
+        @include fix-btn;
+        line-height: 0em;
+        #btn-icon-del {
+            width: 20px;
+            height: 20px;
+            &:hover {
+                color: red;
+            }
+        }
+        #btn-icon-check {
+            width: 25px;
+            height: 25px;
+            &:hover {
+                color: $green;
+            }
+        }
+        #btn-icon-edit {
+            width: 20px;
+            height: 20px;
+            &:hover {
+                color: $princeton-orange;
+            }
+        }
+    }
+    #scroll-box {
+        width: 100%;
+        overflow-x: scroll;
+        p {
+            width: 100%;
+            margin-left: 10px;
+            
+            // text-overflow: scroll;
+            // overflow-x: scroll;
+        }
+    }
+}
+
+.section-lists {
+    width: 100%;
+    height: 90vh;
+    overflow-y: scroll;
+    // position: relative;
+    @include col-spc;
+    h1 {
+        width: 90%;
+        color: $green;
+        text-align: left;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    h3 {
+        width: 90%;
+        color: $green;
+        text-align: left;
+    }
+    .list-wrapper {
+        width: 85%;
+        height: 30%;
+        overflow-y: scroll;
+        // border: 5px solid $indigo-dye;
+        border: 1px dotted $cultured;
+        border-radius: 20px;
+        // box-sizing: border-box;
+        @include col-start;
+        .list-container {
+            width: 100%;
+            // padding-top: 20px;
+            // border: 1px dotted $cultured;
+            // box-sizing: content-box;
+            @include col-spc;
+        }
+    }
+}
+
+#completed-tasks {
+    text-decoration-line: line-through;
+}
+
+// #top {
+//     position: sticky;
+//     top: 0;
+// }
