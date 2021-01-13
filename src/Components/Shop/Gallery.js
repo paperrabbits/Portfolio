@@ -13,7 +13,7 @@ import './Gallery.scss'
 // import Breadcrumb from 'react-bootstrap/Breadcrumb'
 
     //  ACTIONS  ( DUX )
-import {setProducts, setLabels, setCart, setCount, setFaves} from '../../ducks/shopReducer'
+import {setProducts, setLabels, setCart, setCount, setFaves} from './dux/shopReducer'
 
 
 const Gallery = (props) => {

@@ -3,7 +3,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 
     // LOCAL
-import {setPlayer} from '../../ducks/playerReducer'
+import {setPlayer} from '../../dux/playerReducer'
 import './Header.scss'
 
 const Header = (props) => {

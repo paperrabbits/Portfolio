@@ -1,9 +1,11 @@
     //  NPM
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useCallback} from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import axios from 'axios'
-import {Stack, Frame} from 'framer'
+import {motion} from 'framer-motion'
+// import {Stack, Frame} from 'framer'
+
     //  LOCAL
 import ActionModal from './ActionModal'
 import ActionFeed from './ActionFeed'
@@ -21,14 +23,15 @@ import Smally from './Smally'
 import Biggy from './Biggy'
 import '../Cards/Community.scss'
 import './Demo.scss'
-    //  DUX 
-import {setDeck, setPocket, setPocketAi1, setPocketAi2, setPocketAi3, setFlop, setTurn, setRiver, setBurned, setCommunity, setUsed, reset} from '../../../ducks/cardsReducer'
-import {banker, wReady, endHand, movePhase, setCount, setStatus, assignSm, assignBg, setWinner, handIsOver, isShuffling, assignButton, gainXP, countRound, setPlayers, setBigBlind, setSmallBlind, setPurse, isSuited, setBalance} from '../../../ducks/pokerReducer'
-import {setKickerArr, setKickerArrA, setKickerArrB, setKickerArrC, setScore, setScoreA, setScoreB, setScoreC, setHighestA, setHighestB, setHighestC, setHighest, setKicker, setKickerA, setKickerB, setKickerC, resetBest5A, resetBest5B, resetBest5C, setSubTypeA, setSubTypeB, setSubTypeC, setHandTypeA, setHandTypeB, setHandTypeC, setSubType, setHamilton, setBurr, setJefferson, chickenDinner, setMyHand, setHandType, tallyOne, tallySuits, resetBest5} from '../../../ducks/scoringReducer'
-import {setAlive, alertDealer, startBetting, watchTotal, checkPot, showAllHands, setPlayerTurn, setCurrentBet, setPot} from '../../../ducks/cashReducer'
-import {setNextMove} from '../../../ducks/dealerReducer'
 
-import {motion} from 'framer-motion'
+    //  DUX 
+import {setDeck, setPocket, setPocketAi1, setPocketAi2, setPocketAi3, setFlop, setTurn, setRiver, setBurned, setCommunity, setUsed, reset} from '../dux/cardsReducer'
+import {banker, wReady, endHand, movePhase, setCount, setStatus, assignSm, assignBg, setWinner, handIsOver, isShuffling, assignButton, gainXP, countRound, setPlayers, setBigBlind, setSmallBlind, setPurse, isSuited, setBalance} from '../dux/pokerReducer'
+import {setKickerArr, setKickerArrA, setKickerArrB, setKickerArrC, setScore, setScoreA, setScoreB, setScoreC, setHighestA, setHighestB, setHighestC, setHighest, setKicker, setKickerA, setKickerB, setKickerC, resetBest5A, resetBest5B, resetBest5C, setSubTypeA, setSubTypeB, setSubTypeC, setHandTypeA, setHandTypeB, setHandTypeC, setSubType, setHamilton, setBurr, setJefferson, chickenDinner, setMyHand, setHandType, tallyOne, tallySuits, resetBest5} from '../dux/scoringReducer'
+import {setAlive, alertDealer, startBetting, watchTotal, checkPot, showAllHands, setPlayerTurn, setCurrentBet, setPot} from '../dux/cashReducer'
+import {setNextMove} from '../dux/dealerReducer'
+
+
 
 const projVariants = {
     hidden: {opacity: 0}, 
@@ -36,6 +39,7 @@ const projVariants = {
         transition: {duration: 1}
     }
 }
+
 
 const Game = (props) => {
     const {round, buttonIndex, players, smallPosition, bigPosition, phase} = props.game.poker
@@ -45,6 +49,7 @@ const Game = (props) => {
     const {deck} = props.cards
     const {potIsGood, showAllHands} = props.cash.status
     const {isActive} = props.cash.cashFlow
+    const {username} = props.user.player
 
     const [toggleButton, setToggleButton] = useState(0)
     const [toggleSmallBlind, setToggleSmallBlind] = useState(1)
@@ -53,6 +58,10 @@ const Game = (props) => {
     const [pokerStatus, setPokerStatus] = useState('')
     const [countDown, setCountDown] = useState(6)
     const [showClock, setShowClock] = useState(false)
+
+    useEffect(() => {
+        console.log(deck.length, deck, props.cards.flop, props.cards.turn, props.cards.river, props.cards.burned, props.cards.used)
+    }, [deck, props.cards.used])
 
     useEffect(() => {
         if (isShuffling === true) {
@@ -117,7 +126,8 @@ const Game = (props) => {
         setToggleRules(!toggleRules)
     }
 
-    const shuffle = () => {
+    const shuffle = useCallback(() => {
+        colorLog('SHUFFLING', 'success')
         //  ACTUAL GAME DECK => TURN BACK ON FOR FULL 52-CARD DECK!!!
             axios.get('/api/deck')
                 .then((res) => props.setDeck(res.data))
@@ -129,14 +139,14 @@ const Game = (props) => {
             // .catch(err => console.log(err));
             // console.log('TEST-SHUFFLE => ACTIVE')
             // await actionReady()
-    }
+    }, [deck])
 
     useEffect(() => {
         if (!deck.length) {
             shuffle()
         }
-        // console.log(deck.length)
     }, [deck, shuffle])
+
 
     const colorLog = (message, color) => {
         color = color || "black";
@@ -166,17 +176,16 @@ const Game = (props) => {
     }
 
 
-    const deal = () => {
+    const deal = useCallback(() => {
         colorLog('...DEALING', 'yellow')
-        console.log(toggleButton, toggleBigBlind, toggleSmallBlind)
-        // props.setCount(0)
+        // console.log(toggleButton, toggleSmallBlind, toggleBigBlind)
         
     //  SELECTING CARDS @ RANDOM => (card_id: 0 < card_id >= 52)
         let rand1 = Math.ceil(Math.random() * deck.length);
         let rand2 = Math.ceil(Math.random() * deck.length);
             let cardIndex1 = deck.findIndex(element => element.card_id === rand1);
             let cardIndex2 = deck.findIndex(element => element.card_id === rand2);
-        // console.log(deck)
+
     //  PURPOSELY SPLICING ORIGINAL ARRAY IN ORDER TO AVOID DUPLICATE CARDS BEING DEALT
                 const card1 = deck.splice(cardIndex1, 1);
                 const card2 = deck.splice(cardIndex2, 1);
@@ -216,7 +225,6 @@ const Game = (props) => {
         props.setBurr([...pocketB]);            
         props.setPocketAi3([...pocketC]);
         props.setJefferson([...pocketC]);
-        // console.log(props.cards)
         props.setUsed([
             ...pocketArr,
             ...pocketA,
@@ -236,8 +244,7 @@ const Game = (props) => {
         let bgStakes =  poker.players[refreshBg].cash - poker.bigBlind;
         let money = poker.smallBlind + poker.bigBlind
 
-        // let findTurn = isActive.indexOf(bigPosition) + 1
-
+            // let findTurn = isActive.indexOf(bigPosition) + 1
             if (poker.bigPosition === 3) {
                 props.setPlayerTurn(0)
             } else {
@@ -251,10 +258,9 @@ const Game = (props) => {
         props.setCurrentBet(poker.bigBlind)
         props.setPot(money)
         setWatcher()
-        // console.log('hit-1')
         props.isShuffling(false)
-        // console.log('hit-2')
-    }
+    }, [deck])
+        //  --> IMMEDIATELY INVOKEED
         const setWatcher = () => {
             let balances = [
                 poker.players[0].balance,
@@ -265,16 +271,16 @@ const Game = (props) => {
             props.watchTotal([...balances])
         }
 
+
     useEffect(() => {
         const timer = setTimeout(() => {
-            // console.log('timer')
             if (isShuffling && deck.length) {
-                // console.log('timer-again')
+                colorLog('TRIGGER DEAL()', 'success')
                 deal()
             }
         }, 100);
         return () => clearTimeout(timer);
-    }, [deck, isShuffling])
+    }, [isShuffling, deck, deal])
 
 
     const flop = () => {
@@ -286,24 +292,26 @@ const Game = (props) => {
         let rand2 = Math.ceil(Math.random() * deck.length)
         let rand3 = Math.ceil(Math.random() * deck.length)
         let burningOne = Math.ceil(Math.random() * deck.length)
-            let cardIndex1 = deck.findIndex(card => card.card_id === rand1)
-            let cardIndex2 = deck.findIndex(card => card.card_id === rand2)
-            let cardIndex3 = deck.findIndex(card => card.card_id === rand3)
-            let burnIndex = deck.findIndex(card => card.card_id === burningOne)
-                const flop1 = deck.splice(cardIndex1, 1)
-                const flop2 = deck.splice(cardIndex2, 1)
-                const flop3 = deck.splice(cardIndex3, 1)
-                const burn1 = deck.splice(burnIndex, 1)
+
+        let cardIndex1 = deck.findIndex(card => card.card_id === rand1)
+        let cardIndex2 = deck.findIndex(card => card.card_id === rand2)
+        let cardIndex3 = deck.findIndex(card => card.card_id === rand3)
+        let burnIndex = deck.findIndex(card => card.card_id === burningOne)
+
+        const flop1 = deck.splice(cardIndex1, 1)
+        const flop2 = deck.splice(cardIndex2, 1)
+        const flop3 = deck.splice(cardIndex3, 1)
+        const burn1 = deck.splice(burnIndex, 1)
+
         const house = [flop1[0], flop2[0], flop3[0]]
         const burning = [burn1[0]]
         const mine = [...house, ...finalHand]
-        
         const botA = [...house, ...props.score.botA.finalHand]
         const botB = [...house, ...props.score.botB.finalHand]
         const botC = [...house, ...props.score.botC.finalHand]
         
-        props.setBurned(burning)
-        props.setFlop(house)
+        props.setBurned([...burning])
+        props.setFlop([...house])
         
         props.setUsed([
             ...pocketAi1,
@@ -313,6 +321,7 @@ const Game = (props) => {
             ...turn,
             ...river,
             ...community,
+            ...house,
             ...burning
         ]);
         
@@ -336,10 +345,12 @@ const Game = (props) => {
 
         let rand1 = Math.ceil(Math.random() * deck.length)
         let burningOne = Math.ceil(Math.random() * deck.length)
-            let cardIndex1 = deck.findIndex(card => card.card_id === rand1)
-            let cardIndex2 = deck.findIndex(card => card.card_id === burningOne)
-                const turn1 = deck.splice(cardIndex1, 1)
-                const burn2 = deck.splice(cardIndex2, 1)
+
+        let cardIndex1 = deck.findIndex(card => card.card_id === rand1)
+        let cardIndex2 = deck.findIndex(card => card.card_id === burningOne)
+
+        const turn1 = deck.splice(cardIndex1, 1)
+        const burn2 = deck.splice(cardIndex2, 1)
 
         const house = [turn1[0]]
         const burning = [...burned, burn2[0]]
@@ -382,10 +393,12 @@ const Game = (props) => {
 
         let rand1 = Math.ceil(Math.random() * deck.length)
         let burningOne = Math.ceil(Math.random() * deck.length)
-            let cardIndex1 = deck.findIndex(card => card.card_id === rand1)
-            let cardIndex2 = deck.findIndex(card => card.card_id === burningOne)
-                const river1 = deck.splice(cardIndex1, 1)
-                const burn3 = deck.splice(cardIndex2, 1)
+
+        let cardIndex1 = deck.findIndex(card => card.card_id === rand1)
+        let cardIndex2 = deck.findIndex(card => card.card_id === burningOne)
+
+        const river1 = deck.splice(cardIndex1, 1)
+        const burn3 = deck.splice(cardIndex2, 1)
         
         const house = [river1[0]]
         const burning = [...burned, burn3[0]]
@@ -432,13 +445,14 @@ const Game = (props) => {
 
     const clear = () => {
         setShowClock(false)
-            colorLog('...SETTING TABLE', 'yellow')
+        colorLog('...SETTING TABLE', 'yellow')
+
         props.showAllHands(false)
         props.setSubType('')
         props.endHand(0)
         props.wReady(false)
         
-        props.isShuffling(true)
+            props.isShuffling(true)
     
         props.reset([])
         props.setMyHand([])
@@ -571,12 +585,16 @@ const Game = (props) => {
                 <div id='player-list' >
                     <div className='player-box'>
                         {/* <div className={props.cash.status.whosTurn === 0 ? 'player-status-active' : 'player-status'} > */}
-                        <div className={winner.includes('Player1') ? 'player-status-active-w' : showAllHands ? 'player-status' : props.cash.status.whosTurn === 0 ? 'player-status-active' : 'player-status'} >
-                            <h3 id='player-box-name' > {poker.players[0].username} </h3>
-                            <p style={{color: poker.players[0].cash > 250 ? 'silver' : poker.players[0].cash > 0 ? 'yellow' : 'red'}} > ${poker.players[0].cash} </p>
+                        <div className={winner.includes('Player 1') ? 'player-status-active-w' : showAllHands ? 'player-status' : props.cash.status.whosTurn === 0 ? 'player-status-active' : 'player-status'} >
+                            <h3 id='player-box-name' > {'Player 1'} </h3>
+                            <p style={{color: poker.players[0].cash > 250 ? 'silver' : poker.players[0].cash > 0 ? 'yellow' : 'red'}} > ${poker.players[0].cash.toFixed(2)} </p>
                         </div>
                         <div className='pocket-divider' >
-                            <Pocket />
+                            {
+                                props.cards.pocket.length 
+                                ?   <Pocket />
+                                :   null
+                            }
                             {
                                 toggleBigBlind === 0 
                                     ? <div className='button-container' > <Biggy  /> </div>
@@ -592,7 +610,7 @@ const Game = (props) => {
                         {/* <div className={props.cash.status.whosTurn === 1 ? 'player-status-active' : 'player-status'} > */}
                         <div className={winner.includes('Hamilton') ? 'player-status-active-w' : showAllHands ? 'player-status' : props.cash.status.whosTurn === 1 ? 'player-status-active' : 'player-status'} >
                             <h3 id='player-box-name' > {poker.players[1].username} </h3>
-                            <p style={{color: poker.players[1].cash > 250 ? 'silver' : poker.players[1].cash > 0 ? 'yellow' : 'red'}} > ${poker.players[1].cash} </p>
+                            <p style={{color: poker.players[1].cash > 250 ? 'silver' : poker.players[1].cash > 0 ? 'yellow' : 'red'}} > ${poker.players[1].cash.toFixed(2)} </p>
                         </div>
                         <div className='pocket-divider' >
                             {
@@ -616,7 +634,7 @@ const Game = (props) => {
                         {/* <div className={props.cash.status.whosTurn === 2 ? 'player-status-active' : 'player-status'} > */}
                         <div className={winner.includes('Burr') ? 'player-status-active-w' : showAllHands ? 'player-status' : props.cash.status.whosTurn === 2 ? 'player-status-active' : 'player-status'} >
                             <h3 id='player-box-name' > {poker.players[2].username} </h3>
-                            <p style={{color: poker.players[2].cash > 250 ? 'silver' : poker.players[2].cash > 0 ? 'yellow' : 'red'}} > ${poker.players[2].cash} </p>
+                            <p style={{color: poker.players[2].cash > 250 ? 'silver' : poker.players[2].cash > 0 ? 'yellow' : 'red'}} > ${poker.players[2].cash.toFixed(2)} </p>
                         </div>
                         
                         <div className='pocket-divider' >
@@ -647,7 +665,7 @@ const Game = (props) => {
                         {/* <div className={props.cash.status.whosTurn === 3 ? 'player-status-active' : 'player-status'} > */}
                         <div className={winner.includes('Jefferson') ? 'player-status-active-w' : showAllHands ? 'player-status' : props.cash.status.whosTurn === 3 ? 'player-status-active' : 'player-status'} >
                             <h3 id='player-box-name' > {poker.players[3].username} </h3>
-                            <p style={{color: poker.players[3].cash > 250 ? 'silver' : poker.players[3].cash > 0 ? 'yellow' : 'red'}} > ${poker.players[3].cash} </p>
+                            <p style={{color: poker.players[3].cash > 250 ? 'silver' : poker.players[3].cash > 0 ? 'yellow' : 'red'}} > ${poker.players[3].cash.toFixed(2)} </p>
                         </div>
                         <div className='pocket-divider' >
                             {

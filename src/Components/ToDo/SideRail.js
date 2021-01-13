@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router'
-import {setFilter} from '../../ducks/listReducer'
+import {setFilter} from './dux/listReducer'
 import './SideRail.scss'
 import axios from 'axios'
 

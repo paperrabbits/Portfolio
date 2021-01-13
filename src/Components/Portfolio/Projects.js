@@ -28,11 +28,14 @@ const Projects = (props) => {
             animate='visible'
         >
             <div className='main-grid-row' >
-                <div className='col-1' >
-                    <SiAtom className='arrow' />
-                    <p> eCommerce Demo </p>
-                    {/* <FaLongArrowAltRight className='arrow' /> */}
-                </div>
+                {/* <div className='flip-card' > */}
+                    <div className='col-1' >
+                        <SiAtom className='arrow' />
+                        <p> eCommerce Demo </p>
+                    </div>
+                    {/* <p> Description </p>
+                    <p> Features </p> */}
+                {/* </div> */}
                 <motion.div 
                     className='col-2'
                     id='eCommerce'
@@ -42,11 +45,14 @@ const Projects = (props) => {
                 </motion.div>
             </div>
             <div className='main-grid-row' >
-                <div className='col-1' >
-                    <SiAtom className='arrow' />
-                    <p> Card Game Demo </p>
-                    {/* <FaLongArrowAltRight className='arrow' /> */}
-                </div>
+                {/* <div className='flip-card' > */}
+                    <div className='col-1' >
+                        <SiAtom className='arrow' />
+                        <p> Card Game Demo </p>
+                    </div>
+                    {/* <p> Description </p>
+                    <p> Features </p> */}
+                {/* </div> */}
                 <motion.div 
                     className='col-2'
                     id='games'
@@ -56,11 +62,14 @@ const Projects = (props) => {
                 </motion.div>
             </div>
             <div className='main-grid-row' >
-                <div className='col-1' >
-                    <SiAtom className='arrow' />
-                    <p> To-Do List Demo </p>
-                    {/* <FaLongArrowAltRight className='arrow' /> */}
-                </div>
+                {/* <div className='flip-card' > */}
+                    <div className='col-1' >
+                        <SiAtom className='arrow' />
+                        <p> To-Do List Demo </p>
+                    </div>
+                    {/* <p> Description </p>
+                    <p> Features </p> */}
+                {/* </div> */}
                 <motion.div 
                     className='col-2'
                     id='productivity'

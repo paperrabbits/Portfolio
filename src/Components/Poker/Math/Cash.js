@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
 
     // LOCAL
-import {setPot} from '../../../ducks/cashReducer'
+import {setPot} from '../dux/cashReducer'
 import './Cash.scss'
 
 const Cash = (props) => {

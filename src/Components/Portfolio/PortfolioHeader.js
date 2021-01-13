@@ -6,7 +6,7 @@ import {GiEarthAmerica} from 'react-icons/gi'
 import {GiWireframeGlobe} from 'react-icons/gi'
 import {GiCircleClaws} from 'react-icons/gi'
 import {motion} from 'framer-motion'
-import {didVisit} from '../../ducks/styleReducer'
+import {didVisit} from './dux/styleReducer'
 import {connect} from 'react-redux'
 
 //  LOCAL

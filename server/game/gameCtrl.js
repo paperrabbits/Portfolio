@@ -3,6 +3,7 @@
 module.exports = {
     shuffle: (req, res) => {
         const db = req.app.get('db')
+        console.log('TRUFFLE')
 
         db.gameplay.shuffle()
         .then(deck => res.status(200).send(deck))

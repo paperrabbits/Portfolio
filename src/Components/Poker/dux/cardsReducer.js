@@ -94,6 +94,7 @@ export function setUsed(cards) {
     }
 }
 export function reset(emptyArr) {
+    console.log('PAYLOAD', emptyArr)
     return {
         type: RESET,
         payload: emptyArr

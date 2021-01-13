@@ -4,7 +4,7 @@ import axios from 'axios'
 import {connect} from 'react-redux'
 //  LOCAL
 import './CreateList.scss'
-import {addTask, addLabel} from '../../ducks/listReducer'
+import {addTask, addLabel} from './dux/listReducer'
 
 const CreateList = (props) => {
     const {taskLabels, tasks} = props.list

@@ -10,7 +10,7 @@ import BuyIn from './BuyIn'
 import LiveGame from './LiveGame'
 
 //  ACTIONS
-import {loggedIn, setRoute} from '../../../ducks/liveReducer'        
+import {loggedIn, setRoute} from '../dux/liveReducer'
     
 const projVariants = {
     hidden: {opacity: 0}, 

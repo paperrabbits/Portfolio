@@ -5,6 +5,7 @@ module.exports = {
     register: async (req, res) => {
         const {email, username, password} = req.body
         const db = req.app.get('db')
+        console.log('hit-ctrl-POKER')
         console.log(`EMAIL: ${email}, USERNAME: ${username}, PASSWORD: ${password}`)
         
         let foundPlayer = await db.auth.check_player(email);
@@ -35,9 +36,9 @@ module.exports = {
     login: async (req, res) => {
         const {email, username, password} = req.body
         const db = req.app.get('db')
-        console.log(`EMAIL: ${email}, USERNAME: ${username}, PASSWORD: ${password}`)
-        console.log(email, username, password)
-        console.log(req.body)
+        // console.log(`EMAIL: ${email}, USERNAME: ${username}, PASSWORD: ${password}`)
+        console.log('hit CTRL')
+        console.table(req.body)
 
         let foundPlayer = await db.auth.check_player(email)
         let foundUsername = await db.auth.check_username(username)
@@ -61,12 +62,13 @@ module.exports = {
         
             delete foundPlayer[0].password
         req.session.user = foundPlayer[0]
-        console.log(foundPlayer[0], 'LOGINBACK')
+        console.table(foundPlayer[0])
         res.status(202).send(req.session.user)
     },
 
     logout: (req, res) => {
         console.log(req.session.user, 'LOGOUTBACK')
+        console.table(req.session.user)
         req.session.destroy()
         res.sendStatus(200)
     }

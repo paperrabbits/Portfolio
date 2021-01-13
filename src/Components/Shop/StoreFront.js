@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {motion} from 'framer-motion'
 import {withRouter, useRouteMatch, useParams} from 'react-router-dom'
 import ShopHeader from './ShopHeader'
-import {triggerAuth} from '../../ducks/shopReducer'
+import {triggerAuth} from './dux/shopReducer'
 import routes from '../../routes'
 
 const StoreFront = (props) => {

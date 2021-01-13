@@ -7,7 +7,7 @@ import './ToDo.scss'
 import {TiDeleteOutline, TiInputCheckedOutline} from 'react-icons/ti'
 import {BsCheckCircle, BsXDiamondFill, BsXCircle} from 'react-icons/bs'
 import axios from 'axios'
-import {addTask, addLabel} from '../../ducks/listReducer'
+import {addTask, addLabel} from './dux/listReducer'
 
 const ToDo = (props) => {
     const {tasks, user, taskLabels} = props.list

@@ -4,9 +4,10 @@ import {withRouter} from 'react-router'
 import axios from 'axios'
 import preview from '../../assets/overview.png'
 import './Overview.scss'
+import ListAuth from './ListAuth'
 
     //  ACTIONS  ( DUX )
-import {setUser, showDrawer} from '../../ducks/listReducer'
+import {setUser, showDrawer} from './dux/listReducer'
 
 const Overview = (props) => {
     const {push} = props.history
@@ -61,33 +62,34 @@ const Overview = (props) => {
             </header>
             {
                 toggle ?   
-                <section className='auth-container' >
-                    <div className='input-fields' >
-                        <p className='input-labels' > Email: </p>
-                        <input
-                            id='auth-input' 
-                            value={emailInput}
-                            placeholder="Email"
-                            onChange={(evt) => setEmailInput(evt.target.value)} />
-                    </div>
-                    <div className='input-fields' >
-                        <p className='input-labels' > Password: </p>
-                        <input
-                            id='auth-input' 
-                            value={passwordInput}
-                            placeholder='Password'
-                            type='password'
-                            onChange={(evt) => setPasswordInput(evt.target.value)} />
-                    </div>
-                    <div className='auth-btn-container' >
-                        <button 
-                            onClick={login} > 
-                            Login </button>
-                        <button 
-                            onClick={register} > 
-                            Register </button>
-                    </div>
-                </section>
+                // <section className='auth-container' >
+                //     <div className='input-fields' >
+                //         <p className='input-labels' > Email: </p>
+                //         <input
+                //             id='auth-input' 
+                //             value={emailInput}
+                //             placeholder="Email"
+                //             onChange={(evt) => setEmailInput(evt.target.value)} />
+                //     </div>
+                //     <div className='input-fields' >
+                //         <p className='input-labels' > Password: </p>
+                //         <input
+                //             id='auth-input' 
+                //             value={passwordInput}
+                //             placeholder='Password'
+                //             type='password'
+                //             onChange={(evt) => setPasswordInput(evt.target.value)} />
+                //     </div>
+                //     <div className='auth-btn-container' >
+                //         <button 
+                //             onClick={login} > 
+                //             Login </button>
+                //         <button 
+                //             onClick={register} > 
+                //             Register </button>
+                //     </div>
+                // </section>
+                <ListAuth  />
                 : 
                 null
             }

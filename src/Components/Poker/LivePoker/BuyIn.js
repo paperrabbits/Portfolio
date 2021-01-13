@@ -8,7 +8,7 @@ import axios from 'axios'
 import {motion} from 'framer-motion'
 
     //  ACTIONS
-import {loggedIn, payFee} from '../../../ducks/liveReducer'        
+import {loggedIn, payFee} from '../dux/liveReducer'
     
 const projVariants = {
     hidden: {opacity: 0}, 

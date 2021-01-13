@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
-import {setScoreB, setKickerArrB, setHighestB, setKickerB, setBurr, setHandTypeB, setSubTypeB, resetBest5B, countRoyalFlushB, countStraightFlushB, count4KindB, countFullHouseB, countFlushB, countStraightB, count3KindB, count2PairB, countPairB, countHighCardB} from '../../../ducks/scoringReducer'
-import '../Cards/Community.scss'
+import {setScoreB, setKickerArrB, setHighestB, setKickerB, setBurr, setHandTypeB, setSubTypeB, resetBest5B, countRoyalFlushB, countStraightFlushB, count4KindB, countFullHouseB, countFlushB, countStraightB, count3KindB, count2PairB, countPairB, countHighCardB} from '../dux/scoringReducer'
 import {cipher, cipherFlush, cipherSuits} from '../Math/CountingCards'
+import '../Cards/Community.scss'
 import {GiPokerHand} from 'react-icons/gi'
 
 const ScoreBurr = (props) => {

@@ -1,73 +1,82 @@
 //  NPM
 import React, {useState, useEffect} from 'react'
-// import axios from 'axios'
-import {connect} from 'react-redux'
+import axios from 'axios'
+import {connect, useDispatch} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import {GiFireAce} from 'react-icons/gi'
 
 //  LOCAL
-// import {setPlayer, login, register} from '../../../ducks/playerReducer'
-import * as dispatchers from '../../../utils/pokerDispatchers'
-import {setRules} from '../../../ducks/rulesReducer'
+import {setPlayer, register, isLoggedIn} from '../dux/playerReducer'
+import * as dispatchers from '../utils/constants'
+import {setRules} from '../dux/rulesReducer'
+// import {login, setPlayer, isLoggedIn} from '../dux/playerReducer'
 import '../Home/Welcome.scss'
 
 
 const Auth = (props) => {
     const {push} = props.history
-    const {loggedIn} = props.user
+    const {loggedIn, loading, player} = props.user
 
     const [email, setEmail] = useState('')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
+
     useEffect(() => {
-        console.log(loggedIn)
         if (loggedIn) {
             push('/dashboard')
         }
-    }, [loggedIn])
+    }, [loggedIn, loading])
 
-    // useEffect(() => {
-    //     console.log(user)
-    // }, [user])
+
+    useEffect(() => {
+        console.table(player)
+    }, [player])
     
-    // const login = () => {    
-    //     axios.post('/api/login', {email, username, password})
-    //         .then(player => {            
-    //             props.setPlayer(player.data)
-    //             props.loggedIn(player.data)
-    //             console.log(player.data)
+    const login = () => {
+        console.log('firing login from auth comp =>> FRONT-END')
+    
+        axios.post('/api/login', {email, username, password})
+            .then(player => {            
+                props.setPlayer(player.data)
+                props.isLoggedIn(true)
+                console.log(player.data)
                 
-    //             if (player.statusText === 'Accepted') {
-    //                 console.log(player.statusText, '++')
-    //                 checkRoute()
-    //             } else {
-    //                 console.log(player.statusText, '--')
-    //                 window.alert('Incorrect username or password')
-    //             }
-    //         })
-    //         .catch(error => console.log(error))
+                if (player.statusText === 'Accepted') {
+                    console.log(player.statusText, '++')
+                    // checkRoute()
+                } else {
+                    console.log(player.statusText, '--')
+                    window.alert('Incorrect username or password')
+                }
+            })
+            .catch(error => console.log(error))
 
-    //     axios.get('/api/rules')
-    //         .then(res => setRules(res.data))
-    //         .catch(err => console.log(err))
-    // }
+        axios.get('/api/rules')
+            .then(res => props.setRules(res.data))
+            .catch(err => console.log(err))
+    }
 
-    // const register = () => {        
-    //     axios.post('/api/register', {email, username, password})
-    //         .then(player => {
-    //             props.setPlayer(player.data)
-    //             props.loggedIn(player.data)
-    //             console.log(player.data)
+    const register = () => {        
+        axios.post('/api/register', {email, username, password})
+            .then(player => {
+                props.setPlayer(player.data)
+                props.loggedIn(player.data)
+                console.log(player.data)
                 
-    //             if (player.statusText === 'Accepted') {
-    //                 console.log(player.statusText, '++')
-    //                 checkRoute()
-    //             } else {
-    //                 console.log(player.statusText, '--')
-    //             }
-    //         })
-    //         .catch(error => console.log(error))
+                if (player.statusText === 'Accepted') {
+                    console.log(player.statusText, '++')
+                    // checkRoute()
+                } else {
+                    console.log(player.statusText, '--')
+                }
+            })
+            .catch(error => console.log(error))
+    }
+
+    // const handleLogin = () => {
+    //     console.log('hit --> button')
+    //     props.login(email, username, password)
     // }
 
     return (
@@ -111,7 +120,7 @@ const Auth = (props) => {
                     <p> Already have an account? </p>
                     <button
                         className='submit'
-                        onClick={() => dispatchers.login(email, username, password)} >
+                        onClick={() => login(email, username, password)} >
                         Login 
                     </button>
                 </div>
@@ -119,7 +128,8 @@ const Auth = (props) => {
                     <p> Create account </p>
                     <button
                         className='submit'
-                        onClick={() => dispatchers.register(email, username, password)} >
+                        onClick={() => register(email, username, password)} 
+                        >
                         Register 
                     </button>
                 </div>
@@ -129,4 +139,9 @@ const Auth = (props) => {
 }
 const mapStateToProps = (reduxState) => reduxState
 
-export default connect(mapStateToProps, {})(withRouter(Auth))
+export default connect(mapStateToProps, {
+    register,
+    setRules,
+    setPlayer, 
+    isLoggedIn
+})(withRouter(Auth))

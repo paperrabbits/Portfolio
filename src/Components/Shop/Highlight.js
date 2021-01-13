@@ -7,7 +7,7 @@ import {ImArrowLeft2, ImArrowRight2} from 'react-icons/im'
 import './Highlight.scss'
 
     //  ACTIONS  ( DUX )
-import {setCart, setCount} from '../../ducks/shopReducer'
+import {setCart, setCount} from './dux/shopReducer'
 
 const projVariants = {
     hidden: { opacity: 0 },

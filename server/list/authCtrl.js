@@ -32,6 +32,7 @@ module.exports = {
     login: async (req, res) => {
         const {email, password} = req.body
         const db = req.app.get('db')
+        console.log('hit-ctrl-TODO')
 
         let foundUser = await db.list.check_user(email)
 

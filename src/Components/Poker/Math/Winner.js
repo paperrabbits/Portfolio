@@ -4,9 +4,9 @@ import {connect} from 'react-redux'
 
     // LOCAL
 import {cipher, eliminate} from './CountingCards'
-import {setScore, setScoreA, setScoreB, setScoreC} from '../../../ducks/scoringReducer'
-import {setWinner, banker, setWIndex} from '../../../ducks/pokerReducer'
-import {showAllHands} from '../../../ducks/cashReducer'
+import {setScore, setScoreA, setScoreB, setScoreC} from '../dux/scoringReducer'
+import {setWinner, banker, setWIndex} from '../dux/pokerReducer'
+import {showAllHands} from '../dux/cashReducer'
 import './Winner.scss'
 
 const Winner = (props) => {

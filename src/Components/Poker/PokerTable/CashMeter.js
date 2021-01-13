@@ -5,8 +5,8 @@ import {FiPlusCircle} from 'react-icons/fi'
 // import Badge from 'react-bootstrap/Badge'
 
     // LOCAL
-import {watchTotal, startBetting, alertDealer, setAlive, setPlayerTurn, setCurrentBet, setPot, checkPot, setPrevTurn} from '../../../ducks/cashReducer'
-import {handIsOver, wReady, banker, movePhase, setCount, setBalance, setStatus, setWinner, endHand} from '../../../ducks/pokerReducer'
+import {watchTotal, startBetting, alertDealer, setAlive, setPlayerTurn, setCurrentBet, setPot, checkPot, setPrevTurn} from '../dux/cashReducer'
+import {handIsOver, wReady, banker, movePhase, setCount, setBalance, setStatus, setWinner, endHand} from '../dux/pokerReducer'
 import {checkSeats} from '../Math/CountingCards'
 import './CashMeter.scss'
 
@@ -327,10 +327,12 @@ const CashMeter = (props) => {
                             ?   <>
                                     <button
                                         id="ticker-btn"
+                                        disabled={whosTurn !== 0}
                                         onClick={setCall} >
                                         {`Call ${currentBet - activeBalance}`} </button>
                                     <button
                                         id="ticker-btn"
+                                        disabled={whosTurn !== 0}
                                         onClick={setFold} >
                                         Fold </button>    
                                 </>
@@ -338,6 +340,7 @@ const CashMeter = (props) => {
                             ?   <>
                                     <button
                                         id="ticker-btn"
+                                        disabled={whosTurn !== 0}
                                         onClick={setCheck} >
                                         Check </button>
                                 </>

@@ -2,7 +2,7 @@ import React, {useState, useEffect, useRef} from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import {FaArrowAltCircleLeft, FaArrowAltCircleRight} from 'react-icons/fa'
-import {setProducts, setDisplay, setPosition} from '../../ducks/shopReducer'
+import {setProducts, setDisplay, setPosition} from './dux/shopReducer'
 import './Scrollbar.scss'
 
 //  FRAMER MOTION API

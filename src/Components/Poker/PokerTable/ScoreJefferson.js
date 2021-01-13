@@ -1,7 +1,7 @@
     // NPM
 import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
-import {setScoreC, setKickerArrC, setHighestC, setKickerC, setJefferson, setHandTypeC, setSubTypeC, resetBest5C, countRoyalFlushC, countStraightFlushC, count4KindC, countFullHouseC, countFlushC, countStraightC, count3KindC, count2PairC, countPairC, countHighCardC} from '../../../ducks/scoringReducer'
+import {setScoreC, setKickerArrC, setHighestC, setKickerC, setJefferson, setHandTypeC, setSubTypeC, resetBest5C, countRoyalFlushC, countStraightFlushC, count4KindC, countFullHouseC, countFlushC, countStraightC, count3KindC, count2PairC, countPairC, countHighCardC} from '../dux/scoringReducer'
 import {cipher, cipherFlush, cipherSuits} from '../Math/CountingCards'
 import {GiPokerHand} from 'react-icons/gi'
 

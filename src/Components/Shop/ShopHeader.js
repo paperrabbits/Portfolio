@@ -9,7 +9,7 @@ import {AiOutlineShoppingCart} from 'react-icons/ai'
 import {BiXCircle} from 'react-icons/bi'
 
     //  ACTIONS  ( DUX )
-import {setCustomer, setCart, setCount, triggerAuth, setFaves} from '../../ducks/shopReducer'
+import {setCustomer, setCart, setCount, triggerAuth, setFaves} from './dux/shopReducer'
 
 
 const variants = {

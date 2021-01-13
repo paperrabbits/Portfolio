@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
-import {setCart, setCount} from '../../ducks/shopReducer'
+import {setCart, setCount} from './dux/shopReducer'
 import axios from 'axios'
 import Auth from './Auth'
 import './Cart.scss'

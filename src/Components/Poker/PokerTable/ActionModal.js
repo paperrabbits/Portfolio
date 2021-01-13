@@ -4,9 +4,8 @@ import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 
     // LOCAL
-import {setBigBlind, setSmallBlind} from '../../../ducks/pokerReducer'
-import {setHandType, setSubType} from '../../../ducks/scoringReducer'
-import {handIsOver, isShuffling, isSuited,} from '../../../ducks/pokerReducer'
+import {handIsOver, isShuffling, isSuited, setBigBlind, setSmallBlind} from '../dux/pokerReducer'
+import {setHandType, setSubType} from '../dux/scoringReducer'
 import './ActionModal.scss'
 
 const ActionModal = (props) => {

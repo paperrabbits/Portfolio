@@ -12,11 +12,12 @@ const Marquee = (props) => {
     const {username} = props.user.player
 
     const [isOn, setIsOn] = useState(false)
+    const winArr = [username, 'Player1']
 
     return (
         <div className='Marquee-master'>
-            <p> {username || 'Player1'} </p>
-            <div className={handIsOver && winner === 'Player1' ? 'marquee-header-w' : 'marquee-header'} > <ShowStopper /> </div>
+            <h1> {username || 'Player1'} </h1>
+            <div className={handIsOver && winArr.includes(winner) ? 'marquee-header-w' : 'marquee-header'} > <ShowStopper /> </div>
             <div id='winner-bucket' > {handIsOver ? <Winner /> : null} </div>
             {/* <div className='switch-container'>
                 <input

@@ -10,9 +10,9 @@ import Status from './Status'
     //  STYLES
 import './Poker.scss'
     //  ACTIONS
-import {assignSm, assignBg, payEntry, isShuffling, assignButton, gainXP, countRound, setPlayers, setBigBlind, setSmallBlind, setPurse} from '../../../ducks/pokerReducer'
-import {setChipCount, setAlive, demoVersion} from '../../../ducks/cashReducer'
-import {setRules} from '../../../ducks/rulesReducer'
+import {assignSm, assignBg, payEntry, isShuffling, assignButton, gainXP, countRound, setPlayers, setBigBlind, setSmallBlind, setPurse} from '../dux/pokerReducer'
+import {setChipCount, setAlive, demoVersion} from '../dux/cashReducer'
+import {setRules} from '../dux/rulesReducer'
 
 const player1 = {
     username: 'Player1',

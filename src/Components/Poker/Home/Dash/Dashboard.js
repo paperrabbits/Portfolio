@@ -6,10 +6,15 @@ import {connect} from 'react-redux'
 import {GiFireAce} from 'react-icons/gi'
 
     // LOCAL
-import {isLoggedIn} from '../../../../ducks/playerReducer'
-import * as dispatchers from '../../../../utils/pokerDispatchers'
+import {isLoggedIn, setPlayer, setImage} from '../../dux/playerReducer'
+// import * as dispatchers from '../../utils/middleware'
 import './Dashboard.scss'
-
+// export const register = (email, username, password) => {    
+//     console.log('hit --> API_REGISTER', email, username, password)
+//         return  axios.post('/api/register', {email, username, password})
+//                 .then(res => res.data)
+//                 .catch(err => console.log(err))
+//     }
 const Dashboard = (props) => {
     const {push} = props.history
     const {email, username, loggedIn} = props.user
@@ -49,25 +54,32 @@ const Dashboard = (props) => {
         setToggle(!toggle)
     }
 
-    // const updatePic = () => {
-    //     const {account_id} = props.user.player
+    const updatePic = () => {
+        const {account_id} = props.user.player
 
-    //     axios.put(`/api/picture/${account_id}`, {profile_pic})
-    //         .then(res => props.setImage(res.data))
-    //         .catch(err => console.log(err))
+        // props.setImage(account_id, profile_pic)
+
+        axios.put(`/api/picture/${account_id}`, {profile_pic})
+            .then(res => props.setImage(res.data))
+            .catch(err => console.log(err))
         
-    //     handleToggle()
-    // }
+        handleToggle()
+    }
 
-    // const logout = () => {
-    //     axios.get('/api/logout')
-    //         .then(player => {
-    //             props.setPlayer(player.data)
-    //             push('/poker')
-    //         })
-    //         .catch(err => console.log(err))
+    const logout = () => {
+        axios.get('/api/logout')
+            .then(res => {
+                props.setPlayer({})
+                props.isLoggedIn(false)
+            })
+            .catch(err => console.log(err))
+    }
+
+    // const keyPress = (evt) => {
+        // if (evt.key === '13') {
+
+        // }
     // }
-    // console.log(props)
 
     return (
         <div className='Dashboard-master' >
@@ -97,7 +109,7 @@ const Dashboard = (props) => {
                             > Live Poker </button>
                         <button
                             id='dash-btn'
-                            onClick={props.logout}
+                            onClick={() => logout()}
                             > Exit Lounge </button>                    
                     </div>       
                 </div>
@@ -123,7 +135,8 @@ const Dashboard = (props) => {
                                     onChange={(evt) => setPic(evt.target.value)} />
                                 <button
                                     id='save-btn'
-                                    onClick={() => dispatchers.setImage(profile_pic)}
+                                    onClick={updatePic}
+                                    // onKeyDown={(evt) => keyPress(evt.target.value)}
                                     > Save </button>
                                 <button
                                     id='save-btn'
@@ -142,5 +155,7 @@ const Dashboard = (props) => {
 const mapStateToProps = (reduxState) => reduxState
 
 export default connect(mapStateToProps, {
-    isLoggedIn
+    isLoggedIn, 
+    setPlayer, 
+    setImage
 })(withRouter(Dashboard))

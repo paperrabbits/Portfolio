@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
 import {motion} from 'framer-motion'
 import cardBack from '../../../assets/card-back.jpg'
@@ -21,16 +21,25 @@ const variants = {
 const Pocket = (props) => {
     const {pocket} = props.cards
     const {players} = props.game.poker
+
+    useEffect(() => {
+        console.log(pocket, 'POCKET MOFO')
+    }, [])
     
     return (
         <div className='pocket-container' >
             {
-                players[0].isFolding 
+                players[0].isFolding
                 ?   <div className='pocket-hand' style={{opacity: '20%'}} >
                         <img src={cardBack} alt='' className='card-back' />
                         <img src={cardBack} alt='' className='card-back' />
                     </div>
-                : pocket.map((card, i) => (
+                :   !pocket.length
+                ?   <div className='pocket-hand' style={{opacity: '20%'}} >
+                        <img src={cardBack} alt='' className='card-back' />
+                        <img src={cardBack} alt='' className='card-back' />
+                    </div>
+                :   pocket.map((card, i) => (
                     <motion.div 
                         key={i}
                         className='pocket-hand'

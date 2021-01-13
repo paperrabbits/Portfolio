@@ -6,8 +6,8 @@ import {withRouter} from 'react-router-dom'
 import {GiFireAce} from 'react-icons/gi'
 
     // LOCAL
-import {setPlayer} from '../../../ducks/playerReducer'
-import {setRules} from '../../../ducks/rulesReducer'
+import {setPlayer} from '../dux/playerReducer'
+import {setRules} from '../dux/rulesReducer'
 import './Welcome.scss'
 
 const Auth = (props) => {

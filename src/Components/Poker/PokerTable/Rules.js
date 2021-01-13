@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import {GiPokerHand} from 'react-icons/gi'
 
     // LOCAL
-import {setRules} from '../../../ducks/rulesReducer'
+import {setRules} from '../dux/rulesReducer'
 import './Rules.scss'
 
 const Rules = (props) => {

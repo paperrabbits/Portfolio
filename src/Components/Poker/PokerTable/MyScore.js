@@ -4,8 +4,8 @@ import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 
     // LOCAL
-import {setScore, setHighest, setKickerArr, setBestHand, setSubType, setKicker, countRoyalFlush, countStraightFlush, count4Kind, countFullHouse, countFlush, countStraight, count3Kind, count2Pair, countPair, countHighCard, resetBest5, setHandType, tallyOne, tallySuits} from '../../../ducks/scoringReducer'
-import {setRules} from '../../../ducks/rulesReducer'
+import {setScore, setHighest, setKickerArr, setBestHand, setSubType, setKicker, countRoyalFlush, countStraightFlush, count4Kind, countFullHouse, countFlush, countStraight, count3Kind, count2Pair, countPair, countHighCard, resetBest5, setHandType, tallyOne, tallySuits} from '../dux/scoringReducer'
+import {setRules} from '../dux/rulesReducer'
 import {cipher, cipherSuits} from '../Math/CountingCards'
 import './Rules.scss'
 
@@ -39,28 +39,36 @@ const MyScore = (props) => {
     }, [finalHand])
 
     useEffect(() => {
-        best5.hasRoyalFlush
-            ? checkTypes('Royal Flush')
-            : best5.hasStraightFlush
-            ? checkTypes('Straight Flush')
-            : best5.has4Kind
-            ? checkTypes('4 of a Kind')
-            : best5.hasFullHouse
-            ? checkTypes('Full House')
-            : best5.hasFlush
-            ? checkTypes('Flush')
-            : best5.hasStraight
-            ? checkTypes('Straight')
-            : best5.has3Kind
-            ? checkTypes('3 of a Kind')
-            : best5.has2Pair
-            ? checkTypes('2 Pair')
-            : best5.hasPair
-            ? checkTypes('Pair')
-            : best5.hasHighCard
-            ? checkTypes('High Card')
-            : console.log()
-    }, [best5])
+        if (props.score.best5.hasRoyalFlush === true) {
+            checkTypes('Royal Flush')
+        } else if (props.score.best5.hasStraightFlush === true) {
+        checkTypes('Straight Flush')
+        } else if (props.score.best5.has4Kind === true) {
+           checkTypes('4 of a Kind')
+       } else if (props.score.best5.hasFullHouse === true) {
+           checkTypes('Full House')
+       } else if (props.score.best5.hasFlush === true) {
+           checkTypes('Flush')
+       } else if (props.score.best5.hasStraight === true) {
+           checkTypes('Straight')
+       } else if (props.score.best5.has3Kind === true) {
+           checkTypes('3 of a Kind')
+       } else if (props.score.best5.has2Pair === true) {
+           checkTypes('2 Pair')
+       } else if (props.score.best5.hasPair === true) {
+           checkTypes('Pair')
+       } else if (props.score.best5.hasHighCard === true) {
+           checkTypes('High Card')
+       }
+    }, [props.score.best5.has4Kind,
+        props.score.best5.hasFullHouse,
+        props.score.best5.hasFlush,
+        props.score.best5.hasStraight,
+        props.score.best5.has3Kind,
+        props.score.best5.has2Pair,
+        props.score.best5.hasPair,
+        props.score.best5.hasHighCard
+    ])
 
     const checkTypes = (player1) => {        
         let list = listOfHands.filter(el => el['badge_name'] === `${player1}`)

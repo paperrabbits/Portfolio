@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
-import {setScoreA, setKickerArrA, setHighestA, setKickerA, setHamilton, setHandTypeA, setSubTypeA, resetBest5A, countRoyalFlushA, countStraightFlushA, count4KindA, countFullHouseA, countFlushA, countStraightA, count3KindA, count2PairA, countPairA, countHighCardA} from '../../../ducks/scoringReducer'
+import {setScoreA, setKickerArrA, setHighestA, setKickerA, setHamilton, setHandTypeA, setSubTypeA, resetBest5A, countRoyalFlushA, countStraightFlushA, count4KindA, countFullHouseA, countFlushA, countStraightA, count3KindA, count2PairA, countPairA, countHighCardA} from '../dux/scoringReducer'
 import {cipher, cipherFlush, cipherSuits} from '../Math/CountingCards'
 import {GiPokerHand} from 'react-icons/gi'
 import '../Cards/Community.scss'
