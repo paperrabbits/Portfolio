@@ -1,4 +1,5 @@
-// const bots = require('../db/gameplay/bot.json')
+const botData = require('../pokerInfo/bots.json')
+const newbKey = require('../pokerInfo/pokerKey.json')
 
 module.exports = {
     shuffle: (req, res) => {
@@ -32,7 +33,22 @@ module.exports = {
         console.log(account_id, 'PULSE')
 
         db.gameplay.launch_game([player_id, account_id])
-        .then(gameTable => res.status(200).send(gameTable))
+        .then(gameTable => res.status(200).send([...gameTable, ...botData]))
         .catch(err => res.status(500).send(err))
+    },
+
+    getRules: (req, res) => {
+        let sorted = newbKey.sort((a, b) => b.badge_id - a.badge_id)
+        res.status(200).send(sorted)
     }
 }
+
+// const monsters = require('../../db/combat/monster.json')
+
+// module.exports = {
+//     getMonster: (req, res) => {
+//         let num = Math.floor(Math.random() * monsters.length)
+//         let monster = monsters[num]
+//         res.status(200).send(monsters[num])
+//     }
+// }

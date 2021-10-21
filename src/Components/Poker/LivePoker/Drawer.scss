@@ -2,20 +2,24 @@
 @import '../../../sass/styles';
 
 .poker-drawer {
-    width: 100%;
+    width: 90%;
     height: 100%;
-    background-color: $cultured;
-    color: $gunmetal;
-    border-radius: 10px;
+    color: $cultured;
+    background-color: $CHARCOAL;
+    // background-image: linear-gradient(to-top, $CHARCOAL, $CHARCOAL2, $gunmetal);
+    // background-image: $gradient-top;
+    border-radius: 20px;
     font-weight: bolder;
+    padding: 0px 10px;
+    // border: 7px solid $CHARCOAL;
     @include col-spc;
-    button {
-        @include fix-btn;
-        z-index: 1;
-        &:hover {
-            color: $steel-blue;
-        }
-    }
+    // button {
+    //     @include fix-btn;
+    //     z-index: 1;
+    //     &:hover {
+    //         color: $steel-blue;
+    //     }
+    // }
     .tray-header {
         width: 100%;
         @include col-start;
@@ -29,11 +33,39 @@
     right: 2px;
     top: 50%;
     &:hover {
-        color: $princeton-orange;
+        color: $indigo-dye2;
     }
 }
 
 #tab-btns {
     width: 25px;
     height: 25px;
+    @include fix-btn;
+        z-index: 1;
+        color: silver;
+        opacity: .5;
+        &:hover {
+            opacity: 1;
+        }
+}
+
+.rules-list-col {
+    @include col-even;
+    width: 95%;
+    height: max-content;
+    // &:hover {
+    //     background-color: $gunmetal;
+    //     border-radius: 20px;
+    // }
+}
+
+.rules-list-row {
+    @include row-spc;
+    width: 100%;
+    color: $cultured;
+    font-size: small;
+}
+
+#icons {
+    color: silver
 }

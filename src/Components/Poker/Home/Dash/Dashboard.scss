@@ -1,6 +1,12 @@
 @import '../../../../sass/mixins';
 @import '../../../../sass/styles';
 
+$h1:  rgba(45,45,45,1);
+$blue: #98b5cc;
+$yellow: #ffcc00;
+$outline: rgba(#fff, .4);
+$shadow: rgba($yellow, .5);
+
 .Dashboard-master {
     width: 100%;
     height: 100%;
@@ -93,15 +99,22 @@
     height: 50px;
     color: rgba(255, 68, 0, 0.891);
     color: rgb(0, 122, 175);
-    color: rgba(88, 88, 88, 0.686);
-    &:hover {
-        color: rgba(150, 150, 150, 0.75);
-    }
+    color: rgba(155, 155, 155, 0.686);
+    // &:hover {
+    //     color: rgba(150, 150, 150, 0.75);
+    // }
+    // animation: flicker linear 3s infinite;
 }
 
 #lighthouse {
     color: rgb(0, 122, 175);
     line-height: 0em;
+    // &:before {
+    //     content: attr(data-heading);
+    //     animation: flicker linear 3s infinite;
+    //     position: absolute;
+    //     left: 39%;
+    // }
 }
 
 #profile-pic {
@@ -135,4 +148,25 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+}
+
+@keyframes flicker {
+	0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+		opacity: .99;
+        text-shadow: 
+            -1px -1px 0 $LIGHTHOUSE,
+            1px -1px 0 $LIGHTHOUSE,
+            -1px 1px 0 $LIGHTHOUSE,
+            1px 1px 0 $LIGHTHOUSE,
+            0 -2px 8px,
+            0 0 2px,
+            0 0 5px $LIGHTHOUSE,
+            0 0 15px #ff4444,
+            0 0 2px #ff7e00,
+            0 2px 3px #000;
+	}
+	20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+		opacity: 0.4;
+		text-shadow: none;
+	}
 }

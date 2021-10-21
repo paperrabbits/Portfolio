@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "bot_name": "Hamilton",
+        "cash": "500"
+    },
+    {
+        "id": 2,
+        "bot_name": "Burr",
+        "cash": "500"
+    },
+    {
+        "id": 3,
+        "bot_name": "Jefferson",
+        "cash": "500"
+    }
+]

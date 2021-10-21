@@ -1,3 +1,4 @@
 {
-    "editor.padding.top": 1
+    "editor.padding.top": 15,
+    "editor.stickyTabStops": true
 }

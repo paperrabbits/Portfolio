@@ -1,15 +1,35 @@
-import React, {useState, useEffect, useRef, useDispatch} from 'react'
-import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
-import './ListAuth.scss'
-// import * as dispatchers from '../../utils/pokerDispatchers'
+import React, {useState, useEffect, useRef, useDispatch} from 'react';
+import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
+import './ListAuth.scss';
+import * as dispatchers from './utils/middleware';
+import axios from 'axios';
+import {setUser, login} from './dux/listReducer';
 
 
 const ListAuth = (props) => {
-    const {push} = props.history
+    const {push} = props.history;
 
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const register = () => {
+        axios.post('/api/register-l', {email, password})
+        .then(user => {
+            console.log('list-api', user.data)
+            props.setUser(user.data)
+        })
+        .catch(err => console.log(err));
+    };
+
+    // const login = () => {
+    //     axios.post('/api/login-l', {email, password})
+    //     .then(user => {
+    //         console.log('list-api', user.data)
+    //         props.setUser(user.data)
+    //     })
+    //     .catch(err => console.log(err));
+    // };
 
 
     return (
@@ -33,17 +53,18 @@ const ListAuth = (props) => {
             </div>
             <div className='auth-btn-container' >
                 <button 
-                    // onClick={() => dispatchers.loginToDo(email, password)} 
+                    onClick={() => props.login(email, password)} 
                     > 
                     Login </button>
                 <button 
-                    // onClick={() => dispatchers.registerToDo(email, password)} 
+                    onClick={() => register(email, password)} 
                     > 
                     Register </button>
             </div>
         </section>
     )
-}
-const mapDux = reduxState => reduxState
+};
 
-export default connect(mapDux, {})(withRouter(ListAuth))
+const mapDux = reduxState => reduxState;
+
+export default connect(mapDux, {setUser, login})(withRouter(ListAuth));

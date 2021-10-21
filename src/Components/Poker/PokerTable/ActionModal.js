@@ -2,6 +2,7 @@
 import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
+import End from './End';
 
     // LOCAL
 import {handIsOver, isShuffling, isSuited, setBigBlind, setSmallBlind} from '../dux/pokerReducer'
@@ -26,7 +27,7 @@ const ActionModal = (props) => {
                     onClick={toDash}  >
                 </img>
                 <h2> {user.player.username} </h2>
-                <p> Stack: ${props.cash.cashFlow.chipCount} </p>
+                <p> Bank: ${props.cash.cashFlow.chipCount} </p>
                 <p> {game.poker.XP} XP </p>
             </div>
             
@@ -77,7 +78,7 @@ const ActionModal = (props) => {
                     {
                         props.clock
                         ? <h1 style={{color: 'silver'}} >{props.timer}</h1>
-                        : null
+                        : < End />
                     }
             </div>
         </div>

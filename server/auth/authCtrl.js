@@ -35,6 +35,7 @@ module.exports = {
 
     login: async (req, res) => {
         const {email, username, password} = req.body
+        console.log(email, username, password)
         const db = req.app.get('db')
         // console.log(`EMAIL: ${email}, USERNAME: ${username}, PASSWORD: ${password}`)
         console.log('hit CTRL')

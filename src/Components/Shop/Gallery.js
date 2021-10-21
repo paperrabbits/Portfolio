@@ -105,6 +105,7 @@ const Gallery = (props) => {
 
     const checkFaves = (id) => {
         let filtered = wishList.map(e => e['product_id'])
+        console.log(filtered.includes(id));
         return filtered.includes(id)
     }
 

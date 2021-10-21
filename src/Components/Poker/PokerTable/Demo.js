@@ -59,9 +59,9 @@ const Game = (props) => {
     const [countDown, setCountDown] = useState(6)
     const [showClock, setShowClock] = useState(false)
 
-    useEffect(() => {
-        console.log(deck.length, deck, props.cards.flop, props.cards.turn, props.cards.river, props.cards.burned, props.cards.used)
-    }, [deck, props.cards.used])
+    // useEffect(() => {
+    //     console.log(deck.length, deck, props.cards.flop, props.cards.turn, props.cards.river, props.cards.burned, props.cards.used)
+    // }, [deck, props.cards.used])
 
     useEffect(() => {
         if (isShuffling === true) {
@@ -77,7 +77,7 @@ const Game = (props) => {
         setToggleButton(buttonIndex)
         setToggleSmallBlind(smallPosition)
         setToggleBigBlind(bigPosition)
-        console.log('fired')
+        // console.log('fired')
     }, [bigPosition])
 
     useEffect(() => {

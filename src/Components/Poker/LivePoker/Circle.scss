@@ -1,0 +1,30 @@
+@import '../../../sass/mixins';
+@import '../../../sass/styles';
+@import '../../../sass/animations';
+
+.circle-container {
+    @include on-circle($item-count: 4, $circle-size: 35em, $item-size: 8em); 
+    margin: 0 auto 0;
+    width: 50%;
+    height: 40%;
+    border: dotted 5px $CHARCOAL;
+    background-color: $CARPET;
+  
+    div { 
+        display: block; 
+        max-width: 100%;
+        border-radius: 50%;
+        filter: grayscale(100%);
+        border: solid 5px $LIGHTHOUSE;
+        transition: .5s;
+        @include col-start;        
+        &:hover {
+        filter: grayscale(0);
+        cursor: pointer;
+        }
+
+        p {
+            color: silver;
+        }
+    }
+}

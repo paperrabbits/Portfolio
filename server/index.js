@@ -10,9 +10,9 @@ const game = require('./game/gameCtrl')
 const profile = require('./game/profileCtrl')
 const shopMain = require('./shop/mainCtrl')
 const shopAuth = require('./shop/authCtrl')
-const app = express()
 const {SESSION_SECRET, SERVER_PORT, CONNECTION_STRING} = process.env
 
+const app = express()
 app.use(express.json())
 
 app.use(session({
@@ -33,7 +33,7 @@ massive({
 }).catch(err => console.log(err))
 
 //  MAIN ENDPOINTS
-app.get('/api/rules', main.getRules)
+app.get('/api/rules', game.getRules)
 
     //  POKER ENDPOINTS
 // app.post('/api/start', game.startGame)
@@ -57,9 +57,9 @@ app.post('/api/register-l', listAuth.register)
 app.post('/api/login-l', listAuth.login)
 app.get('/api/logout-l', listAuth.logout)
 app.post('/api/list-title', listMain.newTitle)
-app.post('/api/task', listMain.addTask)
+app.post('/api/task/:id', listMain.addTask)
 app.get('/api/tasks/:id', listMain.getTasks)
-app.get('/api/labels/:id', listMain.getLabels)
+app.get('/api/labels', listMain.getLabels)
 app.delete('/api/delete/:id', listMain.delete)
 app.put('/api/complete/:id', listMain.checkOff)
 

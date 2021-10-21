@@ -1,7 +1,8 @@
 const initialState = {
     player: {},
     entryFee: true,
-    destination: ''
+    destination: '',
+    seats: []
 }
 
 //  ACTIONS
@@ -10,6 +11,14 @@ export function loggedIn(obj) {
     return {
         type: LOGGED_IN,
         payload: obj
+    }
+}
+
+const SET_SEATING = 'SET_SEATING'
+export function setSeating(arr) {
+    return {
+        type: SET_SEATING,
+        payload: arr
     }
 }
 
@@ -39,6 +48,9 @@ export default function liveReducer(state = initialState, action) {
             return {...state, entryFee: payload};
         case SET_ROUTE:
             return {...state, destination: payload};
+
+        case SET_SEATING: 
+            return {...state, seats: payload};
 
         default: 
             return state;

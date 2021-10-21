@@ -4,11 +4,16 @@
 .CreateList-main {
     width: 50%;
     height: 25%;
-    background-color: $cultured;
     border-radius: 5px;
     padding-left: 50px;
     padding-right: 50px;
     margin-bottom: 10px;
+    position: absolute;
+    top: 100px;
+    left: 300px;
+    // transition-property: all;
+    transition: ease 5s;
+    background-color: rgba(100, 100, 100, 1);
     @include column;
     h1 {
         color: $green;

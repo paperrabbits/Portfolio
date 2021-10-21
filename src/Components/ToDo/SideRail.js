@@ -1,52 +1,56 @@
 import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router'
-import {setFilter} from './dux/listReducer'
+import {setFilter, exit} from './dux/listReducer'
 import './SideRail.scss'
 import axios from 'axios'
 
 const SideRail = (props) => {
-    const {push} = props.history
-    const {taskLabels} = props.list
-    const {tasks} = props.list
+    const {push} = props.history;
+    const {taskLabels} = props.list;
+    const {tasks} = props.list;
 
-    const [toggle, showToggle] = useState(false)
-    const [title, setTitle] = useState('')
-    const [listMap, setListMap] = useState([])
+    const [toggle, showToggle] = useState(false);
+    const [title, setTitle] = useState('');
+    const [listMap, setListMap] = useState([]);
 
 
     const logout = () => {
         axios.get('/api/logout-l')
-        .then(push('/todo'))
-    }
+        .then(() => {
+            props.exit(false)
+            push('/todo')
+        })
+        .catch(err => console.log(err));
+    };
 
 
     useEffect(() => {
         setListMap([...taskLabels])
-    }, [taskLabels])
+    }, [taskLabels]);
 
 
     const handleChange = (evt) => {
-        setTitle(evt.target.value)
-    }
+        setTitle(evt.target.value);
+    };
 
 
     const saveList = () => {
-        const {account_id} = props.list.user
-            console.log(account_id, title, 'id__title')
+        const {account_id} = props.list.user;
+            console.log(account_id, title, 'id__title');
 
         axios.post('/api/list-title', {account_id, title})
             .then(res => props.setFilter(res.data))
-            .catch(err => console.log(err))
+            .catch(err => console.log(err));
 
-        showToggle(false)
-    }
+        showToggle(false);
+    };
 
 
     const counter = (str) => {
-        let filtered = tasks.filter(e => e['title'] === str)
-        return filtered.length
-    }
+        let filtered = tasks.filter(e => e['title'] === str);
+        return filtered.length;
+    };
 
 
     const mapper = listMap.map((el, i) => (
@@ -58,7 +62,7 @@ const SideRail = (props) => {
             <h2> {el} </h2>
             <p>{counter(el)}</p>
         </div>
-    ))
+    ));
 
 
     return (
@@ -81,7 +85,8 @@ const SideRail = (props) => {
             </div>
         </div>
     )
-}
-const mapStateToProps = (reduxState) => reduxState
+};
 
-export default connect(mapStateToProps, {setFilter})(withRouter(SideRail))
+const mapStateToProps = (reduxState) => reduxState;
+
+export default connect(mapStateToProps, {setFilter, exit})(withRouter(SideRail));

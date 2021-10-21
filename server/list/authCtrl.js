@@ -15,14 +15,16 @@ module.exports = {
             };
 
         const salt = bcrypt.genSaltSync(10)
+            console.log('salt', salt)
         const hash = bcrypt.hashSync(password, salt)
+            console.log('hash', hash)
 
         let newUser = await db.list.register(email, hash)
-        // console.log('hit_newUser')
+        console.log('hit_newUser')
         let userAccount = await db.list.create_account(newUser[0].user_id)
-        // console.log('hit_userAccount')
+        console.log('hit_userAccount')
         let sessionPerson = {...newUser[0], ...userAccount[0]}
-        // console.log('hit_sessionPerson')
+        console.log('hit_sessionPerson')
 
         req.session.user = sessionPerson
         console.log(req.session.user, 'registerBACK')
@@ -30,9 +32,12 @@ module.exports = {
     },
 
     login: async (req, res) => {
-        const {email, password} = req.body
+        const {email, password} = req.body;
+        // console.log(req)
+        // console.log(res)
+        console.log(email, password)
         const db = req.app.get('db')
-        console.log('hit-ctrl-TODO')
+        console.log('hit-ctrl-login')
 
         let foundUser = await db.list.check_user(email)
 

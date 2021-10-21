@@ -1,15 +1,17 @@
 //  NPM
-import React, {useState, useEffect} from 'react'
-import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
-import axios from 'axios'
-import {motion, AnimateSharedLayouts} from 'framer-motion'
-import {FaArrowAltCircleLeft, FaArrowAltCircleRight} from 'react-icons/fa'
-import {IoMdCloseCircle} from 'react-icons/io'
+import React, {useState, useEffect} from 'react';
+import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
+import axios from 'axios';
+import {motion, AnimateSharedLayouts} from 'framer-motion';
+import {FaArrowAltCircleLeft, FaArrowAltCircleRight} from 'react-icons/fa';
+import {IoMdCloseCircle} from 'react-icons/io';
+import Circle from './Circle';
+import StatusBar from './StatusBar';
 
 //  LOCAL
-import Drawer from './Drawer'
-import './LiveGame.scss'
+import Drawer from './Drawer';
+import './LiveGame.scss';
     
 const projVariants = {
     hidden: {
@@ -19,31 +21,31 @@ const projVariants = {
     },
     visible: {
         x: 0,
-        transition: {x: {type: 'spring', stiffness: 75, opacity: 1}}
+        transition: {x: {type: 'spring', stiffness: 75, opacity: 0.75}}
     },
     peek: {
         x: -30,
-        transition: {x: {type: 'spring', stiffness: 75, opacity: 1}}
+        transition: {x: {type: 'spring', stiffness: 75, opacity: 0.75}}
     }
-}
+};
     
 const LiveGame = (props) => {
-    const {push} = props.history
+    const {push} = props.history;
 
-    const [toggleDrawer, showToggleDrawer] = useState(true)
-    const [bounce, setBounce] = useState('')
+    const [toggleDrawer, showToggleDrawer] = useState(true);
+    const [bounce, setBounce] = useState('');
 
     useEffect(() => {
-    }, [toggleDrawer])
+    }, [toggleDrawer]);
 
     const toggler = () => {
         if (!toggleDrawer) {
-            setBounce('visible')
+            setBounce('visible');
         } else {
-            setBounce('hidden')
+            setBounce('hidden');
         }
-        showToggleDrawer(!toggleDrawer)
-    }
+        showToggleDrawer(!toggleDrawer);
+    };
 
     return (
         <div className='live-table' >
@@ -54,11 +56,13 @@ const LiveGame = (props) => {
                 <Drawer toggler={toggler} status={toggleDrawer} />
             </motion.div>
             <section>
-                <motion.h1 style={{color: 'silver'}} > Test Component </motion.h1>
+                <StatusBar  />
+                <Circle />
             </section>
         </div>
     )
 }
-const mapStateToProps = (reduxState) => reduxState
 
-export default connect(mapStateToProps, {})(withRouter(LiveGame))
+const mapStateToProps = (reduxState) => reduxState;
+
+export default connect(mapStateToProps, {})(withRouter(LiveGame));

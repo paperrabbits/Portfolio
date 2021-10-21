@@ -41,9 +41,9 @@ const Auth = (props) => {
             })
             .catch(error => console.log(error))
 
-        axios.get('/api/rules')
-            .then(res => setRules(res.data))
-            .catch(err => console.log(err))
+        // axios.get('/api/rules')
+        //     .then(res => setRules(res.data))
+        //     .catch(err => console.log(err))
     }
 
     const register = () => {        

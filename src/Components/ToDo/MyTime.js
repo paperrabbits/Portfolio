@@ -13,11 +13,15 @@ const MyTime = (props) => {
     const {pathname} = props.location
     const {push} = props.history
 
-    // useEffect(() => {
-    //     if (!email) {
-    //         push('/todo')
-    //     }
-    // }, [email, push])
+    useEffect(() => {
+        console.log(props.list.loggedIn)
+        if (props.list.loggedIn === true) {
+            push('/my-time')
+        } else {
+            push('/todo')
+        };
+    }, [props.list.loggedIn])
+    // console.log('children', props.children)
 
     return (
         <div className='app-main' >

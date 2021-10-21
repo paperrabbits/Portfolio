@@ -1,10 +1,11 @@
   // NPM
-import React, {useEffect} from 'react'
-import {withRouter} from 'react-router-dom'
+import React, {useEffect} from 'react';
+import {withRouter} from 'react-router-dom';
 
   // LOCAL
-import './App.scss'
-import routes from './routes'
+import './App.scss';
+import routes from './routes';
+import FloatingButton from './Components/FloatingButton'
 
 const App = (props) => {
   const {pathname} = props.location
@@ -25,8 +26,10 @@ const App = (props) => {
 
   return (
     <div className="App">
+      { pathname !== '/' ? <FloatingButton  /> : null }
       {routes}
     </div>
   )
-}
-export default withRouter(App)
+};
+
+export default withRouter(App);

@@ -1,44 +1,79 @@
-import React, {useState, useEffect} from 'react'
-import {withRouter} from 'react-router-dom'
-import axios from 'axios'
-import {connect} from 'react-redux'
+import React, {useState, useEffect} from 'react';
+import {withRouter} from 'react-router-dom';
+import axios from 'axios';
+import {connect, useDispatch} from 'react-redux';
 //  LOCAL
-import './CreateList.scss'
-import {addTask, addLabel} from './dux/listReducer'
+import './CreateList.scss';
+import {addTask, addLabel, todoAdded, saveNewTodo} from './dux/listReducer';
 
 const CreateList = (props) => {
     const {taskLabels, tasks} = props.list
-    const {account_id} = props.list.user
+    const {account_id, user_id} = props.list.user
+    // const {dispatch} = useDispatch();
+
+    let today = new Date();
+    let dd = String(today.getDate()).padStart(2, '0');
+    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    let yyyy = today.getFullYear();
+
+    today = mm + '/' + dd + '/' + yyyy;
 
     const [state, setState] = useState({
         title: '',
         description: '',
-        due_date: '',
-        task_priority: 0
+        task_date: `${today}`,
+        complete: false,
+        task_label: ''
     })
 
     const handleChange = (evt) => {
         const which = evt.target
         setState({...state, [which.name]: which.value})
+        console.log(state.task_date);
     }
 
-    const submitForm = () => {
-        const {description, due_date, title, task_priority} = state
-        axios.post('/api/task', {title, description, due_date, task_priority, account_id})
-            .then(res => {
-                props.addTask([...tasks, res.data[0]])
+    const handleKeyDown = (e) => {
+        // If the user pressed the Enter key:
+        // const trimmedText = text.trim()
+        if (e.which === 13 && state) {
+          // Create and dispatch the thunk function itself
+          saveNewTodo(state)
+          // And clear out the text input
+            setState({
+                title: '', 
+                description: '', 
+                task_date: '', 
+                complete: false,
+                task_label: ''
             })
-            .catch(err => console.log(err))
+        }
+    }
+
+
+    const submitForm = () => {
+        const {description, task_date, title, complete, task_label} = state
+
+        // axios.post('/api/task', {user_id, title, description, task_date, complete, task_label})
+        //     .then(res => {
+        //         props.addTask([...tasks, res.data[0]])
+        //     })
+        //     .catch(err => console.log(err))
+
+        props.saveNewTodo(user_id, {title, description, task_date, complete, task_label})
         clearInputs()
         props.toggler()
     }
 
+    
+    // document.write(today);
+console.log(today)
     const clearInputs = () => {
         setState({
             title: '', 
             description: '', 
-            due_date: '', 
-            task_priority: 0
+            task_date: '', 
+            complete: false,
+            task_label: ''
         })
     }
 
@@ -55,12 +90,11 @@ const CreateList = (props) => {
                         onChange={handleChange} />
                 </div>
                 <div className='input-labels' >
-                    <h4>Due Date</h4>
+                    <h4>Date</h4>
                     <input 
                         name='due_date' 
-                        value={state.due_date} 
+                        value={state.task_date} 
                         type='input' 
-                        placeholder=' date...' 
                         onChange={handleChange} />
                 </div>
                 <div className='input-labels' >
@@ -70,8 +104,9 @@ const CreateList = (props) => {
                         value={state.description} 
                         type='text' 
                         placeholder=' description...' 
-                        onChange={handleChange} />
-                    <select
+                        onChange={handleChange}
+                        onKeyDown={handleKeyDown} />
+                    {/* <select
                         name='task_priority'
                         value={state.task_priority}
                         type='input'
@@ -79,16 +114,17 @@ const CreateList = (props) => {
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
-                    </select>
+                    </select> */}
                 </div>
             </div>
             <button onClick={submitForm} > +Add Item </button>
         </div>
     )
-}
-const mapStateToProps = (reduxState) => reduxState
+};
+const mapStateToProps = (reduxState) => reduxState;
 
 export default connect(mapStateToProps, {
     addTask, 
-    addLabel
-})(withRouter(CreateList))
+    addLabel,
+    saveNewTodo
+})(withRouter(CreateList));

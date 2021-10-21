@@ -1,17 +1,20 @@
 @import '../../../sass/styles.scss';
+@import '../../../sass/mixins.scss';
 
 .rules-master {
+    @include col-start;
     width: 100%;
     height: max-content;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+    flex-wrap: wrap;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: flex-start;
+    // align-items: center;
     color: whitesmoke;
 }
 
 .rules-list-container {
-    width: 85%;
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -21,7 +24,7 @@
 }
 
 #rules-title {
-    text-align: center;
+    // text-align: left;
     line-height: 1em;
     margin-bottom: 50px;
 }
@@ -29,9 +32,18 @@
 .rules-list {
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include row-spc;
+    margin-right: 10px;
+    // flex-wrap: wrap;
+}
+
+#badge-name {
+    // margin-right: 10px;
+}
+
+#xp-badge {
+    font-size: xx-small;
+    color: silver;
 }
 
 #modal-icons {
@@ -46,5 +58,6 @@
     height: 30px;
     border-radius: 50%;    
     color: rgb(228, 228, 228);
-    padding-left: 10px;
+    padding-left: 5px;
+    // margin-right: 20px;
 }

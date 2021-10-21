@@ -7,14 +7,16 @@ import {GiFireAce} from 'react-icons/gi'
 
     // LOCAL
 import {isLoggedIn, setPlayer, setImage} from '../../dux/playerReducer'
-// import * as dispatchers from '../../utils/middleware'
 import './Dashboard.scss'
+// import * as dispatchers from '../../utils/middleware'
+
 // export const register = (email, username, password) => {    
 //     console.log('hit --> API_REGISTER', email, username, password)
 //         return  axios.post('/api/register', {email, username, password})
 //                 .then(res => res.data)
 //                 .catch(err => console.log(err))
 //     }
+
 const Dashboard = (props) => {
     const {push} = props.history
     const {email, username, loggedIn} = props.user
@@ -90,7 +92,8 @@ const Dashboard = (props) => {
                             <GiFireAce 
                                 id='h-logo' 
                                 onClick={toDash} />
-                            <h1 id='lighthouse'> Lighthouse </h1>
+                            {/* <p id='lighthouse' > the </p>  */}
+                            <h1 id='lighthouse' data-heading='e' > Lighthouse </h1>
                             <p id='lighthouse' > Poker Lounge </p> 
                         </div>
                     </div>

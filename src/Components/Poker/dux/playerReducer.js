@@ -45,6 +45,7 @@ export function register(playerObj) {
     //  POKER REDUCER F(n)
 export default function playerReducer (state = initialState, action) {
     const {type, payload} = action
+    const {player} = state
 
     switch(type) {
     //  LOCAL
@@ -52,7 +53,7 @@ export default function playerReducer (state = initialState, action) {
             return {...state, player: payload};
 
         case SET_IMAGE:
-            return {...state, player: {...state.player, profile_pic: payload}};
+            return {...state, player: {...player, profile_pic: payload}};
 
         case IS_LOGGED_IN:
             return {...state, loggedIn: payload};

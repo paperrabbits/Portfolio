@@ -95,9 +95,9 @@ const Poker = (props) => {
         props.isShuffling(true)
         props.setAlive([0, 1, 2, 3])
 
-        axios.get('/api/rules')
-        .then(list => props.setRules(list.data))
-        .catch(err => console.log(err))
+        // axios.get('/api/rules')
+        // .then(list => props.setRules(list.data))
+        // .catch(err => console.log(err))
 
         setToggleDemo(true)
         props.demoVersion(true)

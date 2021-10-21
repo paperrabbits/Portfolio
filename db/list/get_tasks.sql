@@ -1,5 +1,5 @@
-SELECT * FROM tasks
-WHERE account_id = $1;
+SELECT * FROM tasks;
+-- WHERE account_id = $1;
 
 -- SELECT * FROM tasks t
 -- JOIN list_accounts la ON t.account_id = la.account_id

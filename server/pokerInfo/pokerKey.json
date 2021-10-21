@@ -1,0 +1,52 @@
+[
+    {
+        "badge_id": 1,
+        "badge_name": "High Card",
+        "badge_score": 1
+    },
+    {
+        "badge_id": 2,
+        "badge_name": "Pair",
+        "badge_score": 2
+    },
+    {
+        "badge_id": 3,
+        "badge_name": "2 Pair",
+        "badge_score": 3
+    },
+    {
+        "badge_id": 4,
+        "badge_name": "3 of a Kind",
+        "badge_score": 4
+    },
+    {
+        "badge_id": 5,
+        "badge_name": "Straight",
+        "badge_score": 5
+    },
+    {
+        "badge_id": 6,
+        "badge_name": "Flush",
+        "badge_score": 6
+    },
+    {
+        "badge_id": 7,
+        "badge_name": "Full House",
+        "badge_score": 7
+    },
+    {
+        "badge_id": 8,
+        "badge_name": "Four of a Kind",
+        "badge_score": 8
+    },
+    {
+        "badge_id": 9,
+        "badge_name": "Straight Flush",
+        "badge_score": 9
+    },
+    {
+        "badge_id": 10,
+        "badge_name": "Royal Flush",
+        "badge_score": 10
+    }
+]

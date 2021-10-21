@@ -6,11 +6,14 @@ import axios from 'axios'
 import './Auth.scss'
 
 const Auth = (props) => {
+    //  prop objs
     const {push} = props.history
-    
+
+    //  hooks
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+    //  utility functions
     const login = () => {
         props.toggler()
         axios.post('/api/login-fresh', {email, password})
@@ -43,6 +46,7 @@ const Auth = (props) => {
         .catch(err => console.log(err))
     }
 
+    //  JSX 
     return (
         <div className='sign-master' >
             <div className='sign-wrapper' >
