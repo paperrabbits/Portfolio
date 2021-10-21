@@ -95,7 +95,7 @@ function Tacos({ routes }) {
 }
 
 function Bus() {
-  return <h3>Fucker</h3>;
+  return <h3>Test</h3>;
 }
 
 function Cart() {
